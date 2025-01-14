@@ -5,6 +5,7 @@ import Main from "../Layouts/Main";
 import Home from "../Pages/Home/Home/Home";
 import Error from "../Components/Error";
 import PrivateRoute from "./PrivateRoute";
+import Dashboard from "./../Layouts/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
     path: "dashboard",
     element: (
       <PrivateRoute>
-        <p>dash</p>
+        <Dashboard></Dashboard>
       </PrivateRoute>
     ),
   },

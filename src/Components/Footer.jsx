@@ -10,7 +10,7 @@ import {
 const Footer = () => {
   return (
     <Fade>
-      <div className="  p-10 bg-banner bg-no-repeat bg-center bg-cover bg-base-200">
+      <div className="  p-10 bg-base-200">
         <footer className="footer ">
           <aside>
             <svg

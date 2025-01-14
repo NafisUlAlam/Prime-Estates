@@ -11,8 +11,10 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
+import useAxiosPublic from "../hooks/useAxiosPublic";
 
 const AuthProvider = ({ children }) => {
+  const axiosPublic = useAxiosPublic();
   // for user management
   const [user, setUser] = useState(null);
   //console.log(user);
@@ -53,13 +55,27 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
-      console.log("authprovider", currentUser);
+
+      console.log("current user from auth", currentUser?.email);
+      if (currentUser && currentUser?.email) {
+        console.log("jwt post");
+        const userInfo = { email: currentUser.email };
+        axiosPublic.post("/jwt", userInfo).then((res) => {
+          if (res?.data?.token) {
+            localStorage.setItem("access-token", res.data.token);
+            setLoading(false);
+          }
+        });
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
     });
+
     return () => {
       return unsubscribe();
     };
-  }, []);
+  }, [axiosPublic]);
 
   //theme
   const [theme, setTheme] = useState(

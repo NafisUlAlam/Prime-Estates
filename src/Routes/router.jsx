@@ -4,6 +4,7 @@ import SignUp from "../Pages/SignUp/SignUp";
 import Main from "../Layouts/Main";
 import Home from "../Pages/Home/Home/Home";
 import Error from "../Components/Error";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -17,13 +18,21 @@ const router = createBrowserRouter([
       },
       {
         path: "allproperties",
-        element: <h2>all</h2>,
+        element: (
+          <PrivateRoute>
+            <h2>all</h2>
+          </PrivateRoute>
+        ),
       },
     ],
   },
   {
     path: "dashboard",
-    element: <p>dash</p>,
+    element: (
+      <PrivateRoute>
+        <p>dash</p>
+      </PrivateRoute>
+    ),
   },
 
   {

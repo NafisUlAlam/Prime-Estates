@@ -31,46 +31,14 @@ const Navbar = () => {
           All Properties
         </NavLink>
       </button>
-
-      {loading ? (
-        <span className="loading loading-bars loading-lg"></span>
-      ) : !user ? (
-        <button className="btn">
-          <NavLink
-            to="/signup"
-            className={({ isActive }) => (isActive ? "text-red-400 " : "")}
-          >
-            Sign Up
-          </NavLink>
-        </button>
-      ) : (
-        <>
-          <button className="btn">
-            <NavLink
-              to="/recommendationsforme"
-              className={({ isActive }) => (isActive ? "text-red-400" : "")}
-            >
-              Recommended For Me
-            </NavLink>
-          </button>
-          <button className="btn">
-            <NavLink
-              to="/myqueries"
-              className={({ isActive }) => (isActive ? "text-red-400" : "")}
-            >
-              My Queries
-            </NavLink>
-          </button>
-          <button className="btn">
-            <NavLink
-              to="/myrecommendations"
-              className={({ isActive }) => (isActive ? "text-red-400" : "")}
-            >
-              My Recommendations
-            </NavLink>
-          </button>
-        </>
-      )}
+      <button className="btn">
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) => (isActive ? "text-red-400 " : "")}
+        >
+          Dashboard
+        </NavLink>
+      </button>
     </>
   );
 

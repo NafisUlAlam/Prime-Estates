@@ -1,15 +1,18 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { FaEye, FaGoogle } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useRef, useState } from "react";
 import { imageUpload } from "../../utils/utils";
+import SocialLogin from "../../Components/SocialLogin";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
-  const { signUp, updateUserProfile, googleSignIn, setLoading } = useAuth();
+  const axiosPublic = useAxiosPublic();
+  const { signUp, updateUserProfile, setLoading } = useAuth();
   const [registering, setRegistering] = useState(false);
   const [error, setError] = useState("");
 
@@ -38,7 +41,7 @@ const SignUp = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const photo = e.target.photo.files[0];
-    console.log(email, password, name, photo);
+    //console.log(email, password, name, photo);
     if (password.length < 6) {
       setError("password must be atleast 6 characters long!");
       toast.error("password must be atleast 6 characters long!");
@@ -60,20 +63,30 @@ const SignUp = () => {
     }
 
     const photoURL = await imageUpload(photo);
-    console.log(photoURL);
+    //console.log(photoURL);
     signUp(email, password)
       .then(() => {
         setRegistering(false);
         setLoading(false);
         navigate(location?.state ? location.state : "/", { replace: true });
 
-        toast.success("You have signed up successfully.", {
-          position: "top-center",
-        });
         updateUserProfile({ displayName: name, photoURL: photoURL })
           .then(() => {
             //console.log("updated profile");
             setLoading(false);
+            const userInfo = {
+              name,
+              email,
+              photoURL,
+            };
+            axiosPublic.post("/users", userInfo).then((res) => {
+              //console.log(res.data);
+              if (res.data.insertedId) {
+                toast.success("You have signed up successfully.", {
+                  position: "top-center",
+                });
+              }
+            });
           })
           .catch((err) => {
             setLoading(false);
@@ -95,29 +108,6 @@ const SignUp = () => {
       });
   };
 
-  const handleClick = () => {
-    setLoading(true);
-    googleSignIn()
-      .then(() => {
-        toast.success("You have signed up successfully.", {
-          position: "top-center",
-        });
-        setLoading(false);
-        navigate(location?.state ? location.state : "/", { replace: true });
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-        toast.error(
-          err.message
-            .split("/")[1]
-            .slice(0, err.message.split("/")[1].length - 2),
-          {
-            position: "top-center",
-          }
-        );
-      });
-  };
   return (
     <div className="min-h-screen flex justify-center items-center">
       <div className="card  w-full max-w-lg shrink-0 shadow-2xl p-8">
@@ -191,14 +181,7 @@ const SignUp = () => {
             </button>
           </div>
         </form>
-        <div className="text-center">
-          <button
-            className="btn btn-accent  w-max py-4 bg-blue-50"
-            onClick={handleClick}
-          >
-            <FaGoogle></FaGoogle>Sign In With Google
-          </button>
-        </div>
+        <SocialLogin></SocialLogin>
         <p className="text-center py-4">
           Already have an account?{" "}
           <Link to="/login" className="font-bold underline">

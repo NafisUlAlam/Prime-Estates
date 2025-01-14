@@ -3,12 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import SocialLogin from "../../Components/SocialLogin";
 
 const Login = () => {
-  const { signIn, googleSignIn, setLoading } = useAuth();
+  const { signIn, setLoading } = useAuth();
   const [error, setError] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
@@ -58,30 +58,6 @@ const Login = () => {
       });
   };
 
-  const handleClick = () => {
-    setLoading(true);
-    googleSignIn()
-      .then(() => {
-        toast.success("You have signed up successfully.", {
-          position: "top-center",
-        });
-        //console.log(res.user);
-        navigate(location?.state ? location.state : "/", { replace: true });
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
-        setLoading(false);
-        toast.error(
-          err.message
-            .split("/")[1]
-            .slice(0, err.message.split("/")[1].length - 2),
-          {
-            position: "top-center",
-          }
-        );
-      });
-  };
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="card  p-8 w-full max-w-lg shrink-0 shadow-2xl">
@@ -131,12 +107,7 @@ const Login = () => {
             <button className="btn btn-primary">Log In</button>
           </div>
         </form>
-
-        <div className="text-center">
-          <button className="btn  w-max py-4 btn-accent" onClick={handleClick}>
-            <FaGoogle></FaGoogle>Sign In With Google
-          </button>
-        </div>
+        <SocialLogin></SocialLogin>
         <p className="text-center py-4">
           Don&apos;t have an account?{" "}
           <Link

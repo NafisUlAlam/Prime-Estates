@@ -4,12 +4,14 @@ import Footer from "../Components/Footer";
 
 const Main = () => {
   return (
-    <div>
+    <div className="w-11/12 mx-auto container">
       {/* nav */}
       <Navbar></Navbar>
       <Outlet></Outlet>
       {/* footer */}
-      <Footer></Footer>
+      <div className="mt-8">
+        <Footer></Footer>
+      </div>
     </div>
   );
 };

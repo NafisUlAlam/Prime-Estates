@@ -10,6 +10,7 @@ import { imageUpload } from "../../utils/utils";
 
 const SignUp = () => {
   const { signUp, updateUserProfile, googleSignIn, setLoading } = useAuth();
+  const [registering, setRegistering] = useState(false);
   const [error, setError] = useState("");
 
   const [open, setOpen] = useState(true);
@@ -30,6 +31,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     //prevent default behavior
     e.preventDefault();
+    setRegistering(true);
     setError("");
     setLoading(true);
     const name = e.target.name.value;
@@ -61,6 +63,7 @@ const SignUp = () => {
     console.log(photoURL);
     signUp(email, password)
       .then(() => {
+        setRegistering(false);
         setLoading(false);
         navigate(location?.state ? location.state : "/", { replace: true });
 
@@ -80,6 +83,7 @@ const SignUp = () => {
       .catch((err) => {
         setError(err.message);
         setLoading(false);
+        setRegistering(false);
         toast.error(
           err.message
             .split("/")[1]
@@ -182,7 +186,9 @@ const SignUp = () => {
             {error && <p className="text-xs text-red-500">{error}</p>}
           </div>
           <div className="form-control mt-6">
-            <button className="btn btn-primary">Register</button>
+            <button className="btn btn-primary" disabled={registering}>
+              Register
+            </button>
           </div>
         </form>
         <div className="text-center">

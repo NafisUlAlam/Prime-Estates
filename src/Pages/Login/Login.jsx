@@ -83,7 +83,7 @@ const Login = () => {
       });
   };
   return (
-    <div className="min-h-[600px] flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center">
       <div className="card  p-8 w-full max-w-lg shrink-0 shadow-2xl">
         <h2 className="font-bold text-xl md:text-2xl lg:text-3xl text-center pt-4">
           Login Form

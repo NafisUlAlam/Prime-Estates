@@ -37,10 +37,10 @@ const Navbar = () => {
       ) : !user ? (
         <button className="btn">
           <NavLink
-            to="/register"
+            to="/signup"
             className={({ isActive }) => (isActive ? "text-red-400 " : "")}
           >
-            Register
+            Sign Up
           </NavLink>
         </button>
       ) : (

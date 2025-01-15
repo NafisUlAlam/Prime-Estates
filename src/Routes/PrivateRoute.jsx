@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
   const { user, loading } = useAuth();
+  console.log("inside private route");
   if (loading) {
     return <PageLoading></PageLoading>;
   }

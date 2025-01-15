@@ -34,6 +34,65 @@ const router = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivateRoute>
     ),
+    children: [
+      //admin routes
+      {
+        path: "adminprofile",
+        element: <p>admin profile</p>,
+      },
+      {
+        path: "manageusers",
+        element: <p>users manage</p>,
+      },
+      {
+        path: "manageproperties",
+        element: <p>properties manage</p>,
+      },
+      {
+        path: "managereviews",
+        element: <p>reviews manage</p>,
+      },
+
+      // buyer routes
+      {
+        path: "buyerprofile",
+        element: <p>my profile</p>,
+      },
+      {
+        path: "wishlist",
+        element: <p>wishlist</p>,
+      },
+      {
+        path: "propertybought",
+        element: <p>properties bought</p>,
+      },
+      {
+        path: "myreviews",
+        element: <p>reviews my</p>,
+      },
+
+      //seller routes
+      {
+        path: "sellerprofile",
+        element: <p>my profile</p>,
+      },
+      {
+        path: "addproperty",
+        element: <p>add property</p>,
+      },
+      {
+        path: "myaddedproperties",
+        element: <p>my added properties</p>,
+      },
+      {
+        path: "mysoldproperties",
+        element: <p>my sold properties</p>,
+      },
+      {
+        path: "requestedproperties",
+        element: <p>requested properties</p>,
+      },
+    ],
   },
 
   {

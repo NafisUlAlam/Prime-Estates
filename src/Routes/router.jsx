@@ -6,6 +6,10 @@ import Home from "../Pages/Home/Home/Home";
 import Error from "../Components/Error";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "./../Layouts/Dashboard";
+import Profile from "../Components/Profile";
+import AdminRoute from "./AdminRoute";
+import SellerRoute from "./SellerRoute";
+import BuyerRoute from "./BuyerRoute";
 
 const router = createBrowserRouter([
   {
@@ -35,62 +39,118 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        path: "",
+        element: <p>this is dashboard</p>,
+      },
       //admin routes
       {
         path: "adminprofile",
-        element: <p>admin profile</p>,
+        element: (
+          <AdminRoute>
+            <Profile></Profile>
+          </AdminRoute>
+        ),
       },
       {
         path: "manageusers",
-        element: <p>users manage</p>,
+        element: (
+          <AdminRoute>
+            <p>users manage</p>
+          </AdminRoute>
+        ),
       },
       {
         path: "manageproperties",
-        element: <p>properties manage</p>,
+        element: (
+          <AdminRoute>
+            <p>properties manage</p>
+          </AdminRoute>
+        ),
       },
       {
         path: "managereviews",
-        element: <p>reviews manage</p>,
+        element: (
+          <AdminRoute>
+            <p>reviews manage</p>
+          </AdminRoute>
+        ),
       },
 
       // buyer routes
       {
         path: "buyerprofile",
-        element: <p>my profile</p>,
+        element: (
+          <BuyerRoute>
+            <Profile></Profile>
+          </BuyerRoute>
+        ),
       },
       {
         path: "wishlist",
-        element: <p>wishlist</p>,
+        element: (
+          <BuyerRoute>
+            <p>wishlist</p>
+          </BuyerRoute>
+        ),
       },
       {
         path: "propertybought",
-        element: <p>properties bought</p>,
+        element: (
+          <BuyerRoute>
+            <p>properties bought</p>
+          </BuyerRoute>
+        ),
       },
       {
         path: "myreviews",
-        element: <p>reviews my</p>,
+        element: (
+          <BuyerRoute>
+            <p>reviews my</p>
+          </BuyerRoute>
+        ),
       },
 
       //seller routes
       {
         path: "sellerprofile",
-        element: <p>my profile</p>,
+        element: (
+          <SellerRoute>
+            <Profile></Profile>
+          </SellerRoute>
+        ),
       },
       {
         path: "addproperty",
-        element: <p>add property</p>,
+        element: (
+          <SellerRoute>
+            <p>add property</p>
+          </SellerRoute>
+        ),
       },
       {
         path: "myaddedproperties",
-        element: <p>my added properties</p>,
+        element: (
+          <SellerRoute>
+            <p>my added properties</p>
+          </SellerRoute>
+        ),
       },
       {
         path: "mysoldproperties",
-        element: <p>my sold properties</p>,
+        element: (
+          <SellerRoute>
+            <p>my sold properties</p>
+          </SellerRoute>
+        ),
       },
       {
         path: "requestedproperties",
-        element: <p>requested properties</p>,
+        element: (
+          <SellerRoute>
+            <p>requested properties</p>
+          </SellerRoute>
+        ),
       },
     ],
   },

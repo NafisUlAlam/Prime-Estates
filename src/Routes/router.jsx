@@ -10,6 +10,7 @@ import Profile from "../Components/Profile";
 import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
 import BuyerRoute from "./BuyerRoute";
+import ManageUsers from "../Components/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,7 @@ const router = createBrowserRouter([
         path: "manageusers",
         element: (
           <AdminRoute>
-            <p>users manage</p>
+            <ManageUsers />
           </AdminRoute>
         ),
       },

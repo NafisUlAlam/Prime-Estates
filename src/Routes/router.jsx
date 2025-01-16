@@ -12,6 +12,7 @@ import SellerRoute from "./SellerRoute";
 import BuyerRoute from "./BuyerRoute";
 import ManageUsers from "../Components/ManageUsers";
 import ManageProperties from "../Components/ManageProperties";
+import AllProperties from "../Components/AllProperties";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
         path: "allproperties",
         element: (
           <PrivateRoute>
-            <h2>all</h2>
+            <AllProperties></AllProperties>
           </PrivateRoute>
         ),
       },

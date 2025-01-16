@@ -92,8 +92,36 @@ const ManageUsers = () => {
       }
     });
   };
-  const handleMarkFraud = (id) => {
+  const handleMarkFraud = async (id) => {
     console.log(id);
+    const res = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes!",
+    });
+    if (res.isConfirmed) {
+      try {
+        const { data } = await axiosSecure.patch(`/markfraud/${id}`, {
+          fraud: "fraud",
+        });
+        //console.log(data);
+        // to do : properties need to be rejected here based on the seller id
+        if (data.modifiedCount > 0) {
+          refetch();
+          Swal.fire({
+            title: "Done!",
+            text: "Successfully changed role into seller",
+            icon: "success",
+          });
+        }
+      } catch (error) {
+        toast.error(error);
+      }
+    }
   };
   const handleDeleteUser = (id) => {
     console.log(id);
@@ -158,9 +186,9 @@ const ManageUsers = () => {
               {/* Actions */}
               <td>{user.role}</td>
               <td>
-                <div className="flex gap-2">
+                <div className="flex gap-2 items-center">
                   {/* Make Admin Button */}
-                  {user.role !== "admin" && (
+                  {user.role !== "admin" && user.fraud !== "fraud" && (
                     <button
                       className="btn btn-primary btn-sm w-auto"
                       onClick={() => handleMakeAdmin(user._id)}
@@ -180,13 +208,16 @@ const ManageUsers = () => {
                   )}
 
                   {/* Mark as Fraud Button (only for agents) */}
-                  {user.role === "seller" && (
+                  {user.role === "seller" && user.fraud !== "fraud" && (
                     <button
                       className="btn btn-error btn-sm"
                       onClick={() => handleMarkFraud(user._id)}
                     >
                       Mark as Fraud
                     </button>
+                  )}
+                  {user.role === "seller" && user.fraud === "fraud" && (
+                    <span className="badge badge-error">fraud</span>
                   )}
 
                   {/* Delete User Button */}

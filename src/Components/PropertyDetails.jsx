@@ -78,10 +78,16 @@ const PropertyDetails = () => {
       reviewerPhotoURL: currentUser.photoURL,
       reviewerName: currentUser.displayName,
       reviewerEmail: currentUser.email,
-      propertyId: id,
       rating,
       reviewDescription: review,
+
       sellerEmail: seller.email,
+      sellerPhotoURL: seller.photoURL,
+
+      propertyId: id,
+      propertyPhotoURL: property.photoURL,
+      propertyTitle: property.title,
+      timeStamp: new Date().toISOString(),
     };
     //console.log(reviewInfo);
     const { data } = await axiosSecure.post("/reviews", reviewInfo);

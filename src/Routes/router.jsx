@@ -11,6 +11,7 @@ import AdminRoute from "./AdminRoute";
 import SellerRoute from "./SellerRoute";
 import BuyerRoute from "./BuyerRoute";
 import ManageUsers from "../Components/ManageUsers";
+import ManageProperties from "../Components/ManageProperties";
 
 const router = createBrowserRouter([
   {
@@ -65,7 +66,7 @@ const router = createBrowserRouter([
         path: "manageproperties",
         element: (
           <AdminRoute>
-            <p>properties manage</p>
+            <ManageProperties></ManageProperties>
           </AdminRoute>
         ),
       },

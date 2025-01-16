@@ -114,7 +114,7 @@ const ManageUsers = () => {
           refetch();
           Swal.fire({
             title: "Done!",
-            text: "Successfully changed role into seller",
+            text: "Successfully marked as Fraud!",
             icon: "success",
           });
         }

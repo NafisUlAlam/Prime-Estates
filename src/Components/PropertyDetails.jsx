@@ -44,7 +44,11 @@ const PropertyDetails = () => {
   });
 
   //get reviews of based on the property id
-  const { data: reviews = [], isLoading: isReviewsLoading } = useQuery({
+  const {
+    data: reviews = [],
+    isLoading: isReviewsLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["reviews", id],
     queryFn: async () => {
       const { data } = await axiosSecure.get(`/reviews/property/${id}`);
@@ -55,7 +59,7 @@ const PropertyDetails = () => {
     return <PageLoading></PageLoading>;
 
   const handleAddToWishlist = async (id) => {
-    console.log(id);
+    //console.log(id);
     const wishlistInfo = {
       propertyId: id,
       sellerEmail: seller?.email,
@@ -69,8 +73,9 @@ const PropertyDetails = () => {
     }
   };
   const handleAddReview = async (id, review, rating) => {
-    console.log(id, review, rating);
+    //console.log(id, review, rating);
     const reviewInfo = {
+      reviewerPhotoURL: currentUser.photoURL,
       reviewerName: currentUser.displayName,
       reviewerEmail: currentUser.email,
       propertyId: id,
@@ -78,14 +83,16 @@ const PropertyDetails = () => {
       reviewDescription: review,
       sellerEmail: seller.email,
     };
-    console.log(reviewInfo);
+    //console.log(reviewInfo);
     const { data } = await axiosSecure.post("/reviews", reviewInfo);
     if (data.insertedId) {
       toast.success("Successfully added a review");
+      setIsModalOpen(false);
+      refetch();
     }
   };
   //console.log(role !== "buyer");
-  console.log(property, seller, currentUser, reviews);
+  //console.log(property, seller, currentUser, reviews);
   return (
     <div>
       {/* // property Details */}
@@ -95,16 +102,16 @@ const PropertyDetails = () => {
           alt={property.title}
           className="w-full h-64 object-cover rounded-md"
         />
-        <div className="flex gap-2 items-center mt-8">
+        <div className="flex items-start gap-8 mt-8">
           <div className="flex flex-col items-center gap-2">
             <img
               src={seller.photoURL}
-              className="w-12 h-12 object-cover rounded-full"
+              className="w-16 h-16 object-cover rounded-full"
               alt=""
             />
-            <p className="font-thin">{property.sellerName}</p>
+            <p className="font-medium">{property.sellerName}</p>
           </div>
-          <h1 className="lg:text-2xl font-bold text-center md:text-left flex-1">
+          <h1 className="lg:text-2xl font-bold text-center flex-1">
             {property.title}
           </h1>
         </div>

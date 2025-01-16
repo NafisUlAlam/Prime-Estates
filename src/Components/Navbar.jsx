@@ -105,7 +105,7 @@ const Navbar = () => {
             <div className="group relative">
               <img
                 src={user.photoURL}
-                className="w-12 h-12 object-contain rounded-full"
+                className="w-12 h-12 object-cover rounded-full"
                 alt=""
               />
               <span className="absolute top-[100%] left-[50%] transform -translate-x-1/2 bg-blue-200 text-black text-sm font-medium px-3 py-1 rounded shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">

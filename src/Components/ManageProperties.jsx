@@ -143,6 +143,11 @@ const ManageProperties = () => {
                   </div>
                 </td>
               )}
+              {property.status !== "pending" && (
+                <td>
+                  <span>No action to perform</span>
+                </td>
+              )}
             </tr>
           ))}
         </tbody>

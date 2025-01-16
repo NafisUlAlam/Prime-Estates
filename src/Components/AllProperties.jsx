@@ -54,7 +54,7 @@ const AllProperties = () => {
               </span>
             </p>
             <div className="card-actions justify-end mt-4">
-              <Link to={`propertyDetails/${property._id}`}>
+              <Link to={`/propertyDetails/${property._id}`}>
                 <button className="btn btn-primary btn-sm">Details</button>
               </Link>
             </div>

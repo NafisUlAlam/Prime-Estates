@@ -13,6 +13,7 @@ import BuyerRoute from "./BuyerRoute";
 import ManageUsers from "../Components/ManageUsers";
 import ManageProperties from "../Components/ManageProperties";
 import AllProperties from "../Components/AllProperties";
+import PropertyDetails from "../Components/PropertyDetails";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             <AllProperties></AllProperties>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "propertyDetails/:id",
+        element: <PropertyDetails></PropertyDetails>,
       },
     ],
   },

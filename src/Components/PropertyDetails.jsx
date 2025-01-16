@@ -62,8 +62,21 @@ const PropertyDetails = () => {
     //console.log(id);
     const wishlistInfo = {
       propertyId: id,
+      propertyPhotoURL: property?.photoURL,
+      propertyTitle: property?.title,
+      propertyLocation: property?.location,
+      propertyMinPrice: property?.minPrice,
+      propertyMaxPrice: property?.maxPrice,
+
       sellerEmail: seller?.email,
+      sellerName: seller?.name,
+      sellerPhotoURL: seller?.photoURL,
+
+      verificationStatus: "pending",
+
       buyerEmail: currentUser?.email,
+      buyerName: currentUser?.displayName,
+      buyerPhotoURL: currentUser?.photoURL,
     };
     const { data } = await axiosSecure.post("/wishlist", wishlistInfo);
     if (data.insertedId) {
@@ -75,18 +88,18 @@ const PropertyDetails = () => {
   const handleAddReview = async (id, review, rating) => {
     //console.log(id, review, rating);
     const reviewInfo = {
-      reviewerPhotoURL: currentUser.photoURL,
-      reviewerName: currentUser.displayName,
-      reviewerEmail: currentUser.email,
+      reviewerPhotoURL: currentUser?.photoURL,
+      reviewerName: currentUser?.displayName,
+      reviewerEmail: currentUser?.email,
       rating,
       reviewDescription: review,
 
-      sellerEmail: seller.email,
-      sellerPhotoURL: seller.photoURL,
+      sellerEmail: seller?.email,
+      sellerPhotoURL: seller?.photoURL,
 
       propertyId: id,
-      propertyPhotoURL: property.photoURL,
-      propertyTitle: property.title,
+      propertyPhotoURL: property?.photoURL,
+      propertyTitle: property?.title,
       timeStamp: new Date().toISOString(),
     };
     //console.log(reviewInfo);

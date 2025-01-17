@@ -1,10 +1,11 @@
 import useAuth from "../hooks/useAuth";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import PageLoading from "./PageLoading";
 import Nothing from "./Nothing";
 import TitleAndSubTitle from "./TitleAndSubTitle";
 import MyWishlistCard from "./MyWishlistCard";
+import Swal from "sweetalert2";
 
 const MyWishlistsPage = () => {
   const { user } = useAuth();
@@ -24,12 +25,42 @@ const MyWishlistsPage = () => {
     },
   });
 
-  const handleDelete = (id) => {
-    console.log(id);
-  };
+  const deleteWishlistMutation = useMutation({
+    mutationFn: async (id) => {
+      console.log("wish id", id);
+      await axiosSecure.delete(`/wishlists/user/${id}`);
+    },
+    onSuccess: () => {
+      Swal.fire({
+        title: "Done!",
+        text: "Successfully deleted the wishlist item!",
+        icon: "success",
+      });
+      refetch();
+    },
+    onError: (error) => {
+      Swal.fire({
+        title: `${error.message}`,
+        text: "Could not delete from the wishlist!",
+        icon: "error",
+      });
+    },
+  });
 
-  const handleMakeOffer = (id) => {
+  const handleDelete = async (id) => {
     console.log(id);
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes!",
+    });
+    if (result.isConfirmed) {
+      deleteWishlistMutation.mutate(id);
+    }
   };
 
   if (isWishlistsLoading) return <PageLoading></PageLoading>;
@@ -37,10 +68,8 @@ const MyWishlistsPage = () => {
   return (
     <div>
       <TitleAndSubTitle
-        title={"Your Reviews, Our Recommendations"}
-        subtitle={`Discover tailored suggestions for every Review you post and explore
-            thoughtful recommendations from others. Empower your decisions with a
-            community-driven platform designed for clarity and collaboration.`}
+        title={"Your Wishlist"}
+        subtitle={`Discover the properties you've set your heart on. Your wishlist is where dreams take shape—carefully curated homes and spaces that align with your preferences. Whether you're envisioning your next investment or your forever home, this page keeps track of your favorites for easy access. Browse, review, and take the next step toward making these properties yours. Start exploring now!`}
       ></TitleAndSubTitle>
       <div
         className={`${
@@ -55,7 +84,6 @@ const MyWishlistsPage = () => {
               key={wishlist._id}
               wishlist={wishlist}
               handleDelete={handleDelete}
-              handleMakeOffer={handleMakeOffer}
             ></MyWishlistCard>
           ))
         ) : (

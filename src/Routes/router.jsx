@@ -14,6 +14,7 @@ import ManageUsers from "../Components/ManageUsers";
 import ManageProperties from "../Components/ManageProperties";
 import AllProperties from "../Components/AllProperties";
 import PropertyDetails from "../Components/PropertyDetails";
+import MyReviewsPage from "../Components/MyReviewsPage";
 
 const router = createBrowserRouter([
   {
@@ -114,7 +115,7 @@ const router = createBrowserRouter([
         path: "myreviews",
         element: (
           <BuyerRoute>
-            <p>reviews my</p>
+            <MyReviewsPage />
           </BuyerRoute>
         ),
       },

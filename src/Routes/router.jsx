@@ -15,6 +15,7 @@ import ManageProperties from "../Components/ManageProperties";
 import AllProperties from "../Components/AllProperties";
 import PropertyDetails from "../Components/PropertyDetails";
 import MyReviewsPage from "../Components/MyReviewsPage";
+import MyWishlistsPage from "../Components/MyWishlistsPage";
 
 const router = createBrowserRouter([
   {
@@ -99,7 +100,7 @@ const router = createBrowserRouter([
         path: "wishlist",
         element: (
           <BuyerRoute>
-            <p>wishlist</p>
+            <MyWishlistsPage></MyWishlistsPage>
           </BuyerRoute>
         ),
       },

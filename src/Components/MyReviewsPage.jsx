@@ -49,7 +49,7 @@ const MyReviewsPage = () => {
   });
 
   const handleDelete = async (id) => {
-    console.log(id);
+    //console.log(id);
     const result = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",

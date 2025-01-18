@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
+import { toast } from "react-toastify";
 
 const axiosSecure = axios.create({
   baseURL: import.meta.env.VITE_SERVER_ADDRESS,
@@ -27,6 +28,7 @@ const useAxiosSecure = () => {
       const status = error.response.status;
       if (status === 401 || status === 403) {
         console.log("error from axios interceptor", error);
+        toast.error(error.response.data.message);
         navigate("/login");
         logOut()
           .then(() => {})

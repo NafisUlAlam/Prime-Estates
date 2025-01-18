@@ -72,7 +72,7 @@ const PropertyDetails = () => {
       sellerName: seller?.name,
       sellerPhotoURL: seller?.photoURL,
 
-      verificationStatus: "pending",
+      //verificationStatus: "pending",
 
       buyerEmail: currentUser?.email,
       buyerName: currentUser?.displayName,

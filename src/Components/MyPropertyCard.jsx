@@ -11,6 +11,7 @@ const MyPropertyCard = ({ property }) => {
     propertyDetails,
     sellerDetails,
     status,
+    transactionId,
   } = property;
   return (
     <Slide className="grid grid-rows-subgrid row-span-5">
@@ -48,7 +49,9 @@ const MyPropertyCard = ({ property }) => {
                 status === "pending"
                   ? "text-yellow-500"
                   : `${
-                      status === "accepted" ? "text-green-500" : "text-red-500"
+                      status === "accepted" || status === "bought"
+                        ? "text-green-500"
+                        : "text-red-500"
                     }`
               } `}
             >
@@ -65,15 +68,23 @@ const MyPropertyCard = ({ property }) => {
           </div>
         </div>
         <p className="px-4">{propertyDetails.description.slice(0, 80)}...</p>
-        <div className="card-actions pb-8 justify-center mt-4">
-          {/* {status === "accepted" && (
-          )} */}
-          <button
-            className="btn btn-primary"
-            onClick={() => navigate(`payment/${offerId}`)}
-          >
-            Pay Now!
-          </button>
+        <div className="card-actions px-4 pb-8 justify-center mt-4">
+          {status === "accepted" && (
+            <button
+              className="btn btn-primary"
+              onClick={() => navigate(`payment/${offerId}`)}
+            >
+              Pay Now!
+            </button>
+          )}
+          {status === "bought" && (
+            <p className="text-sm badge badge-outline">
+              transaction ID:
+              <span className="text-sm font-bold">
+                #pi...{transactionId.slice(-6)}
+              </span>
+            </p>
+          )}
         </div>
       </div>
     </Slide>

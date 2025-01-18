@@ -47,8 +47,9 @@ const Sidebar = ({ isOpen, onClose, role }) => {
         {role === "admin" && <AdminMenu></AdminMenu>}
         {role === "buyer" && <BuyerMenu></BuyerMenu>}
         {role === "seller" && <SellerMenu></SellerMenu>}
+        <div className="divider mt-20"></div>
         <button
-          className="mt-auto btn border-b border-b-blue-200"
+          className=" btn border-b border-b-blue-200"
           onClick={handleLogOut}
         >
           Logout

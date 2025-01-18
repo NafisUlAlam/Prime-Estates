@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
-  // console.log(location);
+  console.log(location.pathname);
   // if (location?.pathname.includes("dashboard/")) {
   //   location.pathname = "/";
   // }

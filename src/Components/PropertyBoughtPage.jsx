@@ -14,7 +14,7 @@ const PropertyBoughtPage = () => {
     queryKey: ["propertybought", user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
-      const { data } = await axiosSecure.get(`/properties/user/${user?.email}`);
+      const { data } = await axiosSecure.get(`/offers/user/${user?.email}`);
       return data;
     },
   });

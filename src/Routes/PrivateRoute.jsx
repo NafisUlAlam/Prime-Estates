@@ -5,12 +5,12 @@ import PropTypes from "prop-types";
 
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
-  console.log(location.pathname);
+  //console.log(location.pathname);
   // if (location?.pathname.includes("dashboard/")) {
   //   location.pathname = "/";
   // }
   const { user, loading } = useAuth();
-  console.log("inside private route");
+  //console.log("inside private route");
   if (loading) {
     return <PageLoading></PageLoading>;
   }

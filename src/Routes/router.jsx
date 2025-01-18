@@ -19,6 +19,7 @@ import MyWishlistsPage from "../Components/MyWishlistsPage";
 import OfferPage from "../Components/OfferPage";
 import PropertyBoughtPage from "../Components/PropertyBoughtPage";
 import PaymentPage from "../Components/PaymentPage";
+import ManageReviewsPage from "../Components/ManageReviewsPage";
 
 const router = createBrowserRouter([
   {
@@ -85,7 +86,7 @@ const router = createBrowserRouter([
         path: "managereviews",
         element: (
           <AdminRoute>
-            <p>reviews manage</p>
+            <ManageReviewsPage></ManageReviewsPage>
           </AdminRoute>
         ),
       },

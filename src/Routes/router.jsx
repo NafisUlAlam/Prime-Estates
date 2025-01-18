@@ -17,6 +17,8 @@ import PropertyDetails from "../Components/PropertyDetails";
 import MyReviewsPage from "../Components/MyReviewsPage";
 import MyWishlistsPage from "../Components/MyWishlistsPage";
 import OfferPage from "../Components/OfferPage";
+import PropertyBoughtPage from "../Components/PropertyBoughtPage";
+import PaymentPage from "../Components/PaymentPage";
 
 const router = createBrowserRouter([
   {
@@ -117,7 +119,15 @@ const router = createBrowserRouter([
         path: "propertybought",
         element: (
           <BuyerRoute>
-            <p>properties bought</p>
+            <PropertyBoughtPage></PropertyBoughtPage>
+          </BuyerRoute>
+        ),
+      },
+      {
+        path: "propertybought/payment/:id",
+        element: (
+          <BuyerRoute>
+            <PaymentPage />
           </BuyerRoute>
         ),
       },

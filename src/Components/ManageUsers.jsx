@@ -1,5 +1,5 @@
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import PageLoading from "./PageLoading";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
@@ -15,11 +15,19 @@ const ManageUsers = () => {
   } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
+      //we are giving the current user email here becausue we wanna get all the other users except the logged in user
       const { data } = await axiosSecure.get(
         `/users?email=${currentUser?.email}`
       );
       //console.log(data);
       return data;
+    },
+  });
+
+  const markFraudPropertyMutation = useMutation({
+    mutationFn: async ({ id, info }) => {
+      console.log(id, info);
+      await axiosSecure.patch(`/reject-properties/${id}`, info);
     },
   });
   //console.log(users);
@@ -117,6 +125,9 @@ const ManageUsers = () => {
             text: "Successfully marked as Fraud!",
             icon: "success",
           });
+          //after marking this seller id with fraud, we need to reject all his properties
+          const info = { status: "rejected" };
+          markFraudPropertyMutation.mutate({ id, info });
         }
       } catch (error) {
         toast.error(error);

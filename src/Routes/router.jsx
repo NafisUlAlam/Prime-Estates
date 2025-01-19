@@ -20,6 +20,7 @@ import OfferPage from "../Components/OfferPage";
 import PropertyBoughtPage from "../Components/PropertyBoughtPage";
 import PaymentPage from "../Components/PaymentPage";
 import ManageReviewsPage from "../Components/ManageReviewsPage";
+import AddPropertyPage from "../Components/AddPropertyPage";
 
 const router = createBrowserRouter([
   {
@@ -154,7 +155,7 @@ const router = createBrowserRouter([
         path: "addproperty",
         element: (
           <SellerRoute>
-            <p>add property</p>
+            <AddPropertyPage></AddPropertyPage>
           </SellerRoute>
         ),
       },

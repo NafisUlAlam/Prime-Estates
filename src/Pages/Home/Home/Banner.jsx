@@ -26,29 +26,37 @@ const Banner = () => {
       <SwiperSlide>
         <div>
           <img
-            src={
-              "https://i.ibb.co.com/bmR56v2/dec912b4-84e8-4c5f-9c57-81c639979844.webp"
-            }
-            className="w-full object-cover opacity-60"
+            src={"https://i.ibb.co.com/5rjhTLq/bannerimg1.jpg"}
+            className="w-full h-[500px] object-cover opacity-60"
             alt=""
           />
         </div>
       </SwiperSlide>
       <SwiperSlide>
         <img
-          src={
-            "https://i.ibb.co.com/qnntHPK/0420af1a-29fd-49a8-a90e-7be1ec83dca6.webp"
-          }
-          className="w-full  object-cover opacity-60"
+          src={"https://i.ibb.co.com/rmtTtN5/bannerimg2.jpg"}
+          className="w-full  h-[500px] object-cover opacity-60"
           alt=""
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
-          src={
-            "https://i.ibb.co.com/4YkdhPb/5e2f8743-c682-458c-b195-315ff623c780.webp"
-          }
-          className="w-full  object-cover opacity-60"
+          src={"https://i.ibb.co.com/cDL4JDy/bannerimg3.jpg"}
+          className="w-full h-[500px] object-cover opacity-60"
+          alt=""
+        />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img
+          src={"https://i.ibb.co.com/fQLTCS7/bannerimg4.jpg"}
+          className="w-full h-[500px] object-cover opacity-60"
+          alt=""
+        />
+      </SwiperSlide>
+      <SwiperSlide>
+        <img
+          src={"https://i.ibb.co.com/j51jh2w/bannerimg5.jpg"}
+          className="w-full h-[500px] object-cover opacity-60"
           alt=""
         />
       </SwiperSlide>

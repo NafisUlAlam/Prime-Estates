@@ -91,7 +91,7 @@ const Navbar = () => {
           to="/"
           className=" font-bold text-base lg:text-2xl  gradient-text"
         >
-          Suggestify
+          PrimeEstates
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

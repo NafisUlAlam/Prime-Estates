@@ -5,7 +5,7 @@ const Error = () => {
   const navigate = useNavigate();
 
   //console.log(location);
-  useDocumentTitle(`Error|Suggestify`);
+  useDocumentTitle(`Error|PrimeEstates`);
   return (
     <div className="min-h-screen flex items-center justify-center bg-banner3 bg-center bg-no-repeat bg-cover text-white">
       <div>

@@ -15,7 +15,7 @@ const Login = () => {
   const location = useLocation();
 
   //console.log(location);
-  useDocumentTitle(`Login|Suggestify`);
+  useDocumentTitle(`Login|PrimeEstates`);
   //console.log(loading);
   //console.log(location);
   //on render complete, email is focused

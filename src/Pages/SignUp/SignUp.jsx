@@ -21,7 +21,7 @@ const SignUp = () => {
   const location = useLocation();
 
   //console.log(location);
-  useDocumentTitle(`Register|Suggestify`);
+  useDocumentTitle(`Register|PrimeEstates`);
   //console.log(location);
   //on render complete, focus on name field
   const inputRef = useRef(null);

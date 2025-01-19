@@ -1,13 +1,13 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import firstImg from "../../../assets/IMG-20220428-WA0002.jpg";
-import secondImg from "../../../assets/irest-150x167.jpg";
-import thirdImg from "../../../assets/logo-adidas-150x68.png";
-import fourthImg from "../../../assets/logo-gr8-150x67.jpeg";
-import fifthImg from "../../../assets/logo-reebok-150x68.png";
-import sixthImg from "../../../assets/logo-spirit-150x67.png";
-import seventhImg from "../../../assets/logo-steelflex-150x68.png";
-import eightthImg from "../../../assets/logo-stex-150x68.png";
+import firstImg from "../../../assets/dealer1.png";
+import secondImg from "../../../assets/dealer2.png";
+import thirdImg from "../../../assets/dealer3.webp";
+import fourthImg from "../../../assets/dealer4.png";
+import fifthImg from "../../../assets/dealer5.png";
+import sixthImg from "../../../assets/dealer6.png";
+import seventhImg from "../../../assets/dealer7.png";
+
 import { SwiperSlide, Swiper } from "swiper/react";
 import "swiper/css";
 import "swiper/css/autoplay"; // Import autoplay styles
@@ -47,9 +47,6 @@ const Dealerships = () => {
         </SwiperSlide>
         <SwiperSlide className="border-y-2 border-x-2">
           <img src={seventhImg} className="w-full h-[60px] object-contain" />
-        </SwiperSlide>
-        <SwiperSlide className="border-y-2">
-          <img src={eightthImg} className="w-full h-[60px] object-contain" />
         </SwiperSlide>
       </Swiper>
     </div>

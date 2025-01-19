@@ -42,7 +42,7 @@ const UpdatePropertyPage = () => {
   });
 
   if (isPropertyLoading) return <PageLoading></PageLoading>;
-  console.log(property);
+  //console.log(property);
   const {
     title,
     location,
@@ -82,7 +82,7 @@ const UpdatePropertyPage = () => {
       sellerName,
       sellerEmail,
     };
-    console.log(propertyInfo);
+    //console.log(propertyInfo);
     updatePropertyMutation.mutate(propertyInfo);
   };
   return (

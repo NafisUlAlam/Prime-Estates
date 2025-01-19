@@ -23,6 +23,7 @@ import ManageReviewsPage from "../Components/ManageReviewsPage";
 import AddPropertyPage from "../Components/AddPropertyPage";
 import SellerAddedPropertiesPage from "../Components/SellerAddedPropertiesPage";
 import UpdatePropertyPage from "../Components/UpdatePropertyPage";
+import SellerOfferedPropertiesPage from "../Components/SellerOfferedPropertiesPage";
 
 const router = createBrowserRouter([
   {
@@ -189,7 +190,7 @@ const router = createBrowserRouter([
         path: "requestedproperties",
         element: (
           <SellerRoute>
-            <p>requested properties</p>
+            <SellerOfferedPropertiesPage></SellerOfferedPropertiesPage>
           </SellerRoute>
         ),
       },

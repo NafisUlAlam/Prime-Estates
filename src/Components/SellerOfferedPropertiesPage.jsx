@@ -101,7 +101,9 @@ const SellerOfferedPropertiesPage = () => {
           handleRejectOffer={handleRejectOffer}
         ></SellerOfferedPropertiesTable>
       ) : (
-        <Nothing></Nothing>
+        <Nothing
+          title={"There Aren't Any Offers For Your Properties Yet 😥"}
+        ></Nothing>
       )}
     </div>
   );

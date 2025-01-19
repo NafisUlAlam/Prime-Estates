@@ -37,7 +37,7 @@ const SellerSoldPropertiesPage = () => {
           soldProperties={soldProperties}
         ></SellerSoldPropertiesTable>
       ) : (
-        <Nothing></Nothing>
+        <Nothing title={"You Haven't Sold Any Properties Yet 😥"}></Nothing>
       )}
     </div>
   );

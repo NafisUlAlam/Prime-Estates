@@ -22,8 +22,21 @@ const SellerSoldPropertiesPage = () => {
       },
     });
 
-  if (isSoldPropertiesLoading) return <PageLoading></PageLoading>;
+  const { data: soldAmount = {}, isLoading: isSoldAmountLoading } = useQuery({
+    queryKey: ["totalamount", user?.email],
+    enabled: !!user.email,
+    queryFn: async () => {
+      const { data } = await axiosSecure.get(
+        `/totalsoldamount/seller/${user?.email}`
+      );
+      return data[0];
+    },
+  });
+
+  if (isSoldPropertiesLoading || isSoldAmountLoading)
+    return <PageLoading></PageLoading>;
   //console.log(soldProperties);
+  //console.log(soldAmount);
   return (
     <div>
       <TitleAndSubTitle
@@ -32,6 +45,14 @@ const SellerSoldPropertiesPage = () => {
           "Celebrate your successful deals with a dedicated overview of your sold properties. This page highlights the properties you've closed, along with essential details to track your achievements."
         }
       ></TitleAndSubTitle>
+      <div className="text-center lg:text-2xl my-8">
+        <h2>
+          Your total sales:{" "}
+          <span className="font-bold text-purple-400">
+            ${soldAmount?.totalAmount}
+          </span>
+        </h2>
+      </div>
       {soldProperties.length > 0 ? (
         <SellerSoldPropertiesTable
           soldProperties={soldProperties}

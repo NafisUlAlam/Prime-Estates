@@ -24,6 +24,7 @@ import AddPropertyPage from "../Components/AddPropertyPage";
 import SellerAddedPropertiesPage from "../Components/SellerAddedPropertiesPage";
 import UpdatePropertyPage from "../Components/UpdatePropertyPage";
 import SellerOfferedPropertiesPage from "../Components/SellerOfferedPropertiesPage";
+import SellerSoldPropertiesPage from "../Components/SellerSoldPropertiesPage";
 
 const router = createBrowserRouter([
   {
@@ -182,7 +183,7 @@ const router = createBrowserRouter([
         path: "mysoldproperties",
         element: (
           <SellerRoute>
-            <p>my sold properties</p>
+            <SellerSoldPropertiesPage></SellerSoldPropertiesPage>
           </SellerRoute>
         ),
       },

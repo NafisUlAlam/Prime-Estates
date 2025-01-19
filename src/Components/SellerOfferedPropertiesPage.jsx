@@ -5,7 +5,10 @@ import PageLoading from "./PageLoading";
 import SellerOfferedPropertiesTable from "./SellerOfferedPropertiesTable";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import TitleAndSubTitle from "./TitleAndSubTitle";
+import Nothing from "./Nothing";
 
+// only properties with offers "pending" or "rejected" or "accepted" are here
 const SellerOfferedPropertiesPage = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -23,7 +26,7 @@ const SellerOfferedPropertiesPage = () => {
   });
   const offerPatchMutation = useMutation({
     mutationFn: async ({ id, status }) => {
-      console.log(id, status);
+      //console.log(id, status);
       await axiosSecure.patch(`/offers/seller/${id}`, status);
     },
 
@@ -36,7 +39,7 @@ const SellerOfferedPropertiesPage = () => {
   //console.log(offers);
 
   const handleAcceptOffer = async (id) => {
-    console.log(id);
+    //console.log(id);
     const res = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -86,11 +89,21 @@ const SellerOfferedPropertiesPage = () => {
     }
   };
   return (
-    <SellerOfferedPropertiesTable
-      offers={offers}
-      handleAcceptOffer={handleAcceptOffer}
-      handleRejectOffer={handleRejectOffer}
-    ></SellerOfferedPropertiesTable>
+    <div>
+      <TitleAndSubTitle
+        title={"Offers on Your Listings"}
+        subtitle={`Stay updated with the latest offers from potential buyers interested in your properties. Review, compare, and negotiate bids to secure the best deals. `}
+      ></TitleAndSubTitle>
+      {offers.length > 0 ? (
+        <SellerOfferedPropertiesTable
+          offers={offers}
+          handleAcceptOffer={handleAcceptOffer}
+          handleRejectOffer={handleRejectOffer}
+        ></SellerOfferedPropertiesTable>
+      ) : (
+        <Nothing></Nothing>
+      )}
+    </div>
   );
 };
 

@@ -64,7 +64,7 @@ const SellerAddedPropertiesPage = () => {
   return (
     <div>
       <TitleAndSubTitle
-        title={"My Listed Properties"}
+        title={"Your Listed Properties"}
         subtitle={`Explore the properties you've added to our platform, showcasing your offerings to potential buyers and renters. Manage your listings effortlessly—track their status, update details, or remove them as needed.`}
       ></TitleAndSubTitle>
       <div

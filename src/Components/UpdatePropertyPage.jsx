@@ -1,25 +1,60 @@
-import { useRef, useState } from "react";
-import useAuth from "../hooks/useAuth";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { useParams } from "react-router-dom";
+import useAxiosSecure from "../hooks/useAxiosSecure";
+import PageLoading from "./PageLoading";
+
+import { useState } from "react";
 import { imageUpload } from "../utils/utils";
 import { toast } from "react-toastify";
-import { useMutation } from "@tanstack/react-query";
-import useAxiosSecure from "./../hooks/useAxiosSecure";
 
-const AddPropertyPage = () => {
+const UpdatePropertyPage = () => {
   const [isPending, setIsPending] = useState(false);
-  const { user } = useAuth();
-  const inputRef = useRef();
   const axiosSecure = useAxiosSecure();
+  const { id } = useParams();
 
-  const addPropertyMutation = useMutation({
-    mutationFn: async (propertyInfo) => {
-      //console.log(propertyInfo);
-      const { data } = await axiosSecure.post("/properties", propertyInfo);
+  //getting a property based on its id
+  const {
+    data: property = {},
+    isLoading: isPropertyLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["property", id],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get(`sellerproperty/${id}`);
       return data;
     },
   });
 
-  const handleAddProperty = async (e) => {
+  const updatePropertyMutation = useMutation({
+    mutationFn: async (propertyInfo) => {
+      await axiosSecure.patch(`/sellerupdate/${id}`, propertyInfo);
+    },
+    onSuccess: () => {
+      refetch();
+      toast.success("Successfully updated the property details!");
+      setIsPending(false);
+    },
+    onError: (error) => {
+      refetch();
+      toast.error(error.message);
+      setIsPending(false);
+    },
+  });
+
+  if (isPropertyLoading) return <PageLoading></PageLoading>;
+  console.log(property);
+  const {
+    title,
+    location,
+    photoURL,
+    description,
+    minPrice,
+    maxPrice,
+    sellerName,
+    sellerEmail,
+  } = property;
+
+  const handleUpdateProperty = async (e) => {
     e.preventDefault();
     setIsPending(true);
     const title = e.target.title.value;
@@ -32,7 +67,6 @@ const AddPropertyPage = () => {
     const sellerEmail = e.target.sellerEmail.value;
 
     const photoURL = await imageUpload(photo);
-    const status = "pending";
 
     if (minPrice > maxPrice) {
       toast.error("Minimum price must be smaller than maximum price");
@@ -47,31 +81,20 @@ const AddPropertyPage = () => {
       maxPrice,
       sellerName,
       sellerEmail,
-      status,
     };
-
-    addPropertyMutation.mutate(propertyInfo, {
-      onSuccess: () => {
-        setIsPending(false);
-        toast.success("Successfully added, please wait for admin approval");
-      },
-      onError: (error) => {
-        setIsPending(false);
-        toast.error(error.message);
-      },
-    });
+    console.log(propertyInfo);
+    updatePropertyMutation.mutate(propertyInfo);
   };
-  //console.log(addPropertyMutation.isPending);
   return (
     <div className="min-h-screen ">
       <div className="card  w-full shrink-0 shadow-2xl md:p-8">
         <h2 className="font-bold text-xl md:text-2xl lg:text-3xl text-center pt-4">
-          Add Property
+          Update Property
         </h2>
         <hr className="mt-4 text-black" />
         <form
           className="card-body grid grid-cols-1 md:grid-cols-2"
-          onSubmit={(e) => handleAddProperty(e)}
+          onSubmit={(e) => handleUpdateProperty(e)}
         >
           <div className="form-control">
             <label className="label">
@@ -83,7 +106,7 @@ const AddPropertyPage = () => {
               name="title"
               className="input input-bordered bg-blue-50"
               required
-              ref={inputRef}
+              defaultValue={title}
             />
           </div>
 
@@ -96,6 +119,7 @@ const AddPropertyPage = () => {
               placeholder="Property Location..."
               name="location"
               className="input input-bordered bg-blue-50"
+              defaultValue={location}
               required
             />
           </div>
@@ -113,6 +137,13 @@ const AddPropertyPage = () => {
             />
           </div>
 
+          <div>
+            <label className="label">
+              <span className="label-text">Previous Image</span>
+            </label>
+            <img src={photoURL} className="h-12 rounded-lg" alt="" />
+          </div>
+
           <div className="form-control relative md:col-span-2">
             <label className="label">
               <span className="label-text">Description</span>
@@ -124,6 +155,7 @@ const AddPropertyPage = () => {
               className="textarea textarea-bordered bg-blue-50 p-4"
               rows={10}
               required
+              defaultValue={description}
             />
           </div>
           <div className="form-control relative">
@@ -136,6 +168,7 @@ const AddPropertyPage = () => {
               name="minPrice"
               className="input input-bordered bg-blue-50"
               required
+              defaultValue={minPrice}
             />
           </div>
           <div className="form-control relative">
@@ -148,6 +181,7 @@ const AddPropertyPage = () => {
               name="maxPrice"
               className="input input-bordered bg-blue-50"
               required
+              defaultValue={maxPrice}
             />
           </div>
           <div className="form-control relative">
@@ -158,7 +192,7 @@ const AddPropertyPage = () => {
               type="text"
               name="sellerName"
               className="input input-bordered bg-blue-50"
-              value={user?.displayName}
+              value={sellerName}
               readOnly
             />
           </div>
@@ -170,7 +204,7 @@ const AddPropertyPage = () => {
               type="text"
               name="sellerEmail"
               className="input input-bordered bg-blue-50"
-              value={user?.email}
+              value={sellerEmail}
               readOnly
             />
           </div>
@@ -179,7 +213,7 @@ const AddPropertyPage = () => {
             className="btn btn-accent  md:col-span-2 my-8"
             disabled={isPending}
           >
-            {isPending ? "Adding..." : "Add Property"}
+            {isPending ? "Updating..." : "Update Property"}
           </button>
         </form>
       </div>
@@ -187,4 +221,4 @@ const AddPropertyPage = () => {
   );
 };
 
-export default AddPropertyPage;
+export default UpdatePropertyPage;

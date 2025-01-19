@@ -21,6 +21,8 @@ import PropertyBoughtPage from "../Components/PropertyBoughtPage";
 import PaymentPage from "../Components/PaymentPage";
 import ManageReviewsPage from "../Components/ManageReviewsPage";
 import AddPropertyPage from "../Components/AddPropertyPage";
+import SellerAddedPropertiesPage from "../Components/SellerAddedPropertiesPage";
+import UpdatePropertyPage from "../Components/UpdatePropertyPage";
 
 const router = createBrowserRouter([
   {
@@ -160,10 +162,18 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "updateproperty/:id",
+        element: (
+          <SellerRoute>
+            <UpdatePropertyPage></UpdatePropertyPage>
+          </SellerRoute>
+        ),
+      },
+      {
         path: "myaddedproperties",
         element: (
           <SellerRoute>
-            <p>my added properties</p>
+            <SellerAddedPropertiesPage />
           </SellerRoute>
         ),
       },

@@ -3,6 +3,7 @@ import Banner from "./Banner";
 import Motto from "./Motto";
 import Dealerships from "./Dealerships";
 import Lotties from "./Lotties";
+import LatestReviews from "./LatestReviews";
 
 const Home = () => {
   return (
@@ -17,7 +18,10 @@ const Home = () => {
       </Fade>
 
       <Fade duration={700}>{/* <ShowLatestCards></ShowLatestCards> */}</Fade>
-      <Fade duration={900}>{/* <Review></Review> */}</Fade>
+      <Fade duration={900}>
+        {/* <Review></Review> */}
+        <LatestReviews></LatestReviews>
+      </Fade>
     </div>
   );
 };

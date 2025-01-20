@@ -25,6 +25,7 @@ import SellerAddedPropertiesPage from "../Components/SellerAddedPropertiesPage";
 import UpdatePropertyPage from "../Components/UpdatePropertyPage";
 import SellerOfferedPropertiesPage from "../Components/SellerOfferedPropertiesPage";
 import SellerSoldPropertiesPage from "../Components/SellerSoldPropertiesPage";
+import AdvertiseProperties from "../Components/AdvertiseProperties";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +93,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <ManageReviewsPage></ManageReviewsPage>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "advertiseproperty",
+        element: (
+          <AdminRoute>
+            <AdvertiseProperties></AdvertiseProperties>
           </AdminRoute>
         ),
       },

@@ -44,6 +44,14 @@ const AdminMenu = () => {
           Manage Reviews
         </NavLink>
       </button>
+      <button className="btn border-b border-b-blue-200">
+        <NavLink
+          to="advertiseproperty"
+          className={({ isActive }) => (isActive ? "text-red-400 " : "")}
+        >
+          Advertise Properties
+        </NavLink>
+      </button>
     </>
   );
   return links;

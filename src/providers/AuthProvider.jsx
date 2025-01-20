@@ -17,6 +17,7 @@ const AuthProvider = ({ children }) => {
   const axiosPublic = useAxiosPublic();
   // for user management
   const [user, setUser] = useState(null);
+
   //console.log(user);
   // for preventing private route refresh
   const [loading, setLoading] = useState(true);
@@ -58,16 +59,26 @@ const AuthProvider = ({ children }) => {
 
       console.log("current user from auth", currentUser?.email);
       if (currentUser && currentUser?.email) {
-        console.log("jwt post");
+        //console.log("jwt post");
         const userInfo = { email: currentUser.email };
         axiosPublic.post("/jwt", userInfo).then((res) => {
           if (res?.data?.token) {
             localStorage.setItem("access-token", res.data.token);
+
+            // console.log("token found from jwt", res.data.token);
+            // console.log(
+            //   "getting from localstorage",
+            //   localStorage.getItem("access-token")
+            // );
+
             setLoading(false);
+          } else {
+            console.log("no-token-found in onAuthStateChanged");
           }
         });
       } else {
         localStorage.removeItem("access-token");
+
         setLoading(false);
       }
     });

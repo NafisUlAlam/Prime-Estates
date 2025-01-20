@@ -21,13 +21,13 @@ const Banner = () => {
       pagination={{ clickable: true }}
       spaceBetween={40}
       slidesPerView={1}
-      className="bg-banner5 bg-cover bg-no-repeat bg-center min-h-screen grid place-content-center"
+      className="bg-banner5 bg-cover bg-no-repeat bg-center h-[60dvh]"
     >
       <SwiperSlide>
         <div>
           <img
             src={"https://i.ibb.co.com/5rjhTLq/bannerimg1.jpg"}
-            className="w-full h-[500px] object-cover opacity-60"
+            className="w-full   object-contain opacity-60"
             alt=""
           />
         </div>
@@ -35,28 +35,28 @@ const Banner = () => {
       <SwiperSlide>
         <img
           src={"https://i.ibb.co.com/rmtTtN5/bannerimg2.jpg"}
-          className="w-full  h-[500px] object-cover opacity-60"
+          className="   w-full object-contain opacity-60"
           alt=""
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           src={"https://i.ibb.co.com/cDL4JDy/bannerimg3.jpg"}
-          className="w-full h-[500px] object-cover opacity-60"
+          className="  w-full object-contain opacity-60"
           alt=""
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           src={"https://i.ibb.co.com/fQLTCS7/bannerimg4.jpg"}
-          className="w-full h-[500px] object-cover opacity-60"
+          className=" w-full object-contain opacity-60"
           alt=""
         />
       </SwiperSlide>
       <SwiperSlide>
         <img
           src={"https://i.ibb.co.com/j51jh2w/bannerimg5.jpg"}
-          className="w-full h-[500px] object-cover opacity-60"
+          className="  w-full object-contain opacity-60"
           alt=""
         />
       </SwiperSlide>

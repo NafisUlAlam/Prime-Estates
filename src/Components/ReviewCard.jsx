@@ -52,7 +52,10 @@ const ReviewCard = ({ review, handleDelete }) => {
         </div>
 
         <div className="card-actions pb-8 justify-center mt-6">
-          <button className="btn btn-primary" onClick={() => handleDelete(_id)}>
+          <button
+            className="btn bg-red-200 text-red-500"
+            onClick={() => handleDelete(_id)}
+          >
             Delete
           </button>
         </div>

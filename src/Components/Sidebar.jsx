@@ -28,12 +28,12 @@ const Sidebar = ({ isOpen, onClose, role }) => {
   };
   return (
     <div
-      className={`fixed md:static z-40 transform ${
+      className={`fixed lg:static z-40 transform ${
         isOpen ? "translate-x-0" : "-translate-x-full"
-      } md:translate-x-0 transition-transform duration-300 bg-base-200 min-h-screen w-1/4  flex flex-col shadow-lg border-r-2`}
+      } lg:translate-x-0 transition-transform duration-300 bg-base-200 min-h-screen w-1/4  flex flex-col shadow-lg border-r-2`}
     >
       {/* Header for Mobile */}
-      <div className="flex justify-between items-center p-4 md:hidden">
+      <div className="flex justify-end items-center p-4 lg:hidden">
         <button className="btn bg-base-300  px-4 py-2" onClick={onClose}>
           <FaX></FaX>
         </button>

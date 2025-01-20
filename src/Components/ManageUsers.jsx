@@ -4,6 +4,7 @@ import PageLoading from "./PageLoading";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
 import { toast } from "react-toastify";
+import TitleAndSubTitle from "./TitleAndSubTitle";
 
 const ManageUsers = () => {
   const { user: currentUser } = useAuth();
@@ -166,85 +167,96 @@ const ManageUsers = () => {
     });
   };
   return (
-    <div className="overflow-x-auto p-4">
-      <table className="table table-zebra w-full">
-        <thead>
-          <tr>
-            <th>Photo</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Actions</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((user) => (
-            <tr key={user._id}>
-              {/* User Photo */}
-              <td>
-                <div className="avatar">
-                  <div className="w-12 rounded-full">
-                    <img src={user.photoURL} alt={user.name} />
-                  </div>
-                </div>
-              </td>
-              {/* User Name */}
-              <td>{user.name}</td>
-              {/* User Email */}
-              <td>{user.email}</td>
-              {/* Actions */}
-              <td>{user.role}</td>
-              <td>
-                <div className="flex gap-2 items-center">
-                  {/* Make Admin Button */}
-                  {user.role !== "admin" && user.fraud !== "fraud" && (
-                    <button
-                      className="btn btn-primary btn-sm w-auto"
-                      onClick={() => handleMakeAdmin(user._id)}
-                    >
-                      Make Admin
-                    </button>
-                  )}
+    <>
+      <TitleAndSubTitle
+        title={"User Management Hub"}
+        subtitle={
+          "Oversee, update, and manage user roles and activity to maintain a secure and well-regulated platform experience."
+        }
+      ></TitleAndSubTitle>
+      <div className="overflow-x-auto p-4">
+        <table className="table table-zebra w-full">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Name</th>
 
-                  {/* Make Agent Button */}
-                  {user.role === "buyer" && (
-                    <button
-                      className="btn btn-success btn-sm"
-                      onClick={() => handleMakeSeller(user._id)}
-                    >
-                      Make Seller
-                    </button>
-                  )}
-
-                  {/* Mark as Fraud Button (only for agents) */}
-                  {user.role === "seller" && user.fraud !== "fraud" && (
-                    <button
-                      className="btn btn-error btn-sm"
-                      onClick={() => handleMarkFraud(user._id)}
-                    >
-                      Mark as Fraud
-                    </button>
-                  )}
-                  {user.role === "seller" && user.fraud === "fraud" && (
-                    <span className="badge badge-error">fraud</span>
-                  )}
-
-                  {/* Delete User Button */}
-                  <button
-                    className="btn btn-warning btn-sm"
-                    onClick={() => handleDeleteUser(user._id)}
-                  >
-                    Delete User
-                  </button>
-                </div>
-              </td>
+              <th>Role</th>
+              <th>Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={user._id}>
+                {/* User Photo */}
+                <td>
+                  <div className=" flex flex-col gap-2">
+                    <img
+                      className="w-12 h-12 rounded-full"
+                      src={user.photoURL}
+                      alt={user.name}
+                    />
+
+                    <h2 className="text-sm opacity-70">{user.email}</h2>
+                  </div>
+                </td>
+                <td>
+                  <h2>{user.name}</h2>
+                </td>
+                <td>
+                  {" "}
+                  <h2>{user.role}</h2>
+                </td>
+                <td>
+                  <div className="flex gap-2 items-center">
+                    {/* Make Admin Button */}
+                    {user.role !== "admin" && user.fraud !== "fraud" && (
+                      <button
+                        className="btn btn-primary "
+                        onClick={() => handleMakeAdmin(user._id)}
+                      >
+                        Make Admin
+                      </button>
+                    )}
+
+                    {/* Make Agent Button */}
+                    {user.role === "buyer" && (
+                      <button
+                        className="btn btn-success "
+                        onClick={() => handleMakeSeller(user._id)}
+                      >
+                        Make Seller
+                      </button>
+                    )}
+
+                    {/* Mark as Fraud Button (only for agents) */}
+                    {user.role === "seller" && user.fraud !== "fraud" && (
+                      <button
+                        className="btn btn-error "
+                        onClick={() => handleMarkFraud(user._id)}
+                      >
+                        Mark as Fraud
+                      </button>
+                    )}
+                    {user.role === "seller" && user.fraud === "fraud" && (
+                      <span className="badge badge-error">fraud</span>
+                    )}
+
+                    {/* Delete User Button */}
+                    <button
+                      className="btn bg-red-200  text-red-500 "
+                      onClick={() => handleDeleteUser(user._id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 

@@ -2,13 +2,13 @@ const WhyChooseUs = () => {
   return (
     <div>
       <div className="card lg:card-side bg-blue-50 shadow-xl">
-        <figure className="w-1/2">
+        <figure className="lg:w-1/2">
           <img
             src="https://i.ibb.co.com/6YJBBXG/img-w-text1.jpg"
-            className="object-cover h-full"
+            className="object-cover  lg:h-full"
           />
         </figure>
-        <div className="card-body w-1/2">
+        <div className="card-body lg:w-1/2">
           <h2 className="card-title lg:text-4xl font-bold my-2">
             Why Choose Prime Estates
           </h2>

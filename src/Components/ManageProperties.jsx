@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import PageLoading from "./PageLoading";
 import { toast } from "react-toastify";
@@ -20,8 +20,14 @@ const ManageProperties = () => {
     },
   });
 
+  const verifyPropertyMutation = useMutation({
+    mutationFn: async ({ id, status }) => {
+      await axiosSecure.patch(`/propertystatus/${id}`, status);
+    },
+  });
+
   const handleVerifyProperty = async (id) => {
-    console.log(id);
+    //console.log(id);
     const res = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -32,27 +38,24 @@ const ManageProperties = () => {
       confirmButtonText: "Yes!",
     });
     if (res.isConfirmed) {
-      try {
-        const { data } = await axiosSecure.patch(`/propertystatus/${id}`, {
-          status: "verified",
-        });
-        //console.log(data);
-        // to do : properties need to be rejected here based on the seller id
-        if (data.modifiedCount > 0) {
-          refetch();
-          Swal.fire({
-            title: "Done!",
-            text: "Successfully Verified the property",
-            icon: "success",
-          });
+      const status = { status: "verified" };
+      console.log(id, status);
+      verifyPropertyMutation.mutate(
+        { id, status },
+        {
+          onSuccess: () => {
+            toast.success("Verification successful!");
+            refetch();
+          },
+          onError: (error) => {
+            toast.error(error.message);
+          },
         }
-      } catch (error) {
-        toast.error(error);
-      }
+      );
     }
   };
   const handleRejectProperty = async (id) => {
-    console.log(id);
+    //console.log(id);
     const res = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -63,27 +66,24 @@ const ManageProperties = () => {
       confirmButtonText: "Yes!",
     });
     if (res.isConfirmed) {
-      try {
-        const { data } = await axiosSecure.patch(`/propertystatus/${id}`, {
-          status: "rejected",
-        });
-        //console.log(data);
-        // to do : properties need to be rejected here based on the seller id
-        if (data.modifiedCount > 0) {
-          refetch();
-          Swal.fire({
-            title: "Done!",
-            text: "Successfully Rejected the property",
-            icon: "success",
-          });
+      const status = { status: "rejected" };
+      console.log(id, status);
+      verifyPropertyMutation.mutate(
+        { id, status },
+        {
+          onSuccess: () => {
+            toast.success("Successfully Rejected!");
+            refetch();
+          },
+          onError: (error) => {
+            toast.error(error.message);
+          },
         }
-      } catch (error) {
-        toast.error(error);
-      }
+      );
     }
   };
   if (isLoading) return <PageLoading></PageLoading>;
-  console.log(properties);
+  //console.log(properties);
   return (
     <>
       <TitleAndSubTitle

@@ -78,12 +78,24 @@ const AllProperties = () => {
               key={property._id}
               className="card bg-base-100 shadow-xl hover:shadow-2xl transition"
             >
-              <figure>
+              <figure className="relative">
                 <img
                   src={property.photoURL}
                   alt={property.title}
                   className="w-full h-48 object-cover"
                 />
+                <span
+                  className={`badge absolute top-2 left-4 ${
+                    property.status === "verified"
+                      ? "text-green-500"
+                      : "text-red-500"
+                  }`}
+                >
+                  {property.status}
+                </span>
+                <p className="font-bold absolute top-2 right-4 bg-yellow-500 px-4 rounded-lg">
+                  ${property.minPrice} - ${property.maxPrice}
+                </p>
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{property.title}</h2>
@@ -94,23 +106,10 @@ const AllProperties = () => {
                     alt={property.sellerName}
                     className="w-10 h-10 rounded-full border"
                   />
+
                   <span className="font-semibold">{property.sellerName}</span>
                 </div>
-                <p className="font-bold">
-                  ${property.minPrice} - ${property.maxPrice}
-                </p>
-                <p>
-                  <span className="font-semibold">Verification Status:</span>{" "}
-                  <span
-                    className={`badge ${
-                      property.status === "Verified"
-                        ? "badge-success"
-                        : "badge-warning"
-                    }`}
-                  >
-                    {property.status}
-                  </span>
-                </p>
+
                 <div className="card-actions justify-end mt-4">
                   <Link to={`/propertyDetails/${property._id}`}>
                     <button className="btn btn-primary btn-sm">Details</button>

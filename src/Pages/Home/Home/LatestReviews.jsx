@@ -14,7 +14,7 @@ const LatestReviews = () => {
   });
 
   if (isReviewsLoading) return <PageLoading></PageLoading>;
-  console.log(reviews);
+  //console.log(reviews);
   return (
     <section className="py-6 lg:py-12 bg-[#f4f4f4] mt-12 bg-banner4 bg-no-repeat bg-center bg-cover">
       <div className="text-center space-y-4 w-11/12 mx-auto mb-6 lg:mb-12 lg:mt-12 text-white">

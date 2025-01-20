@@ -4,6 +4,7 @@ import Motto from "./Motto";
 import Dealerships from "./Dealerships";
 import Lotties from "./Lotties";
 import LatestReviews from "./LatestReviews";
+import Advertisements from "./Advertisements";
 
 const Home = () => {
   return (
@@ -19,7 +20,9 @@ const Home = () => {
 
       <Fade duration={700}>{/* <ShowLatestCards></ShowLatestCards> */}</Fade>
       <Fade duration={900}>
-        {/* <Review></Review> */}
+        <Advertisements></Advertisements>
+      </Fade>
+      <Fade duration={1100}>
         <LatestReviews></LatestReviews>
       </Fade>
     </div>

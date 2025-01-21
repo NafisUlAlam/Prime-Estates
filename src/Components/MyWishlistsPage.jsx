@@ -88,7 +88,7 @@ const MyWishlistsPage = () => {
           ))
         ) : (
           <div className="text-center">
-            <Nothing title={`You Don't Have Any Review Posted`}></Nothing>
+            <Nothing title={`You Don't Have Any Wishlist 😥`}></Nothing>
           </div>
         )}
       </div>

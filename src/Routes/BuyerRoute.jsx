@@ -4,8 +4,8 @@ import useRole from "../hooks/useRole";
 import PropTypes from "prop-types";
 
 const BuyerRoute = ({ children }) => {
-  const [role, isLoading] = useRole();
   console.log("inside buyer route private");
+  const [role, isLoading] = useRole();
   if (isLoading) return <PageLoading></PageLoading>;
   if (role === "buyer") return children;
   return <Navigate to="/dashboard" replace="true" />;

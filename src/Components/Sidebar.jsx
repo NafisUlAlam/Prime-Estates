@@ -30,7 +30,7 @@ const Sidebar = ({ isOpen, onClose, role }) => {
     <div
       className={`fixed lg:static z-40 transform ${
         isOpen ? "translate-x-0" : "-translate-x-full"
-      } lg:translate-x-0 transition-transform duration-300 bg-base-200 min-h-screen w-1/4  flex flex-col shadow-lg border-r-2`}
+      } lg:translate-x-0 transition-transform duration-300 bg-base-200  w-1/4  flex flex-col shadow-lg border-r-2`}
     >
       {/* Header for Mobile */}
       <div className="flex justify-end items-center p-4 lg:hidden">
@@ -47,9 +47,9 @@ const Sidebar = ({ isOpen, onClose, role }) => {
         {role === "admin" && <AdminMenu></AdminMenu>}
         {role === "buyer" && <BuyerMenu></BuyerMenu>}
         {role === "seller" && <SellerMenu></SellerMenu>}
-        <div className="divider mt-20"></div>
+
         <button
-          className=" btn border-b border-b-blue-200"
+          className=" btn border-b border-b-blue-200 "
           onClick={handleLogOut}
         >
           Logout

@@ -5,8 +5,8 @@ import { Navigate } from "react-router-dom";
 import PageLoading from "../Components/PageLoading";
 
 const AdminRoute = ({ children }) => {
-  const [role, isLoading] = useRole();
   console.log("inside admin route private");
+  const [role, isLoading] = useRole();
   if (isLoading) return <PageLoading></PageLoading>;
   if (role === "admin") return children;
   return <Navigate to="/dashboard" replace="true" />;

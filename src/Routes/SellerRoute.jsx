@@ -5,8 +5,8 @@ import { Navigate } from "react-router-dom";
 import PageLoading from "../Components/PageLoading";
 
 const SellerRoute = ({ children }) => {
-  const [role, isLoading] = useRole();
   console.log("inside seller route private");
+  const [role, isLoading] = useRole();
   if (isLoading) return <PageLoading></PageLoading>;
   if (role === "seller") return children;
   return <Navigate to="/dashboard" replace="true" />;

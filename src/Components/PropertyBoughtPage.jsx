@@ -43,7 +43,7 @@ const PropertyBoughtPage = () => {
           ))
         ) : (
           <div className="text-center">
-            <Nothing title={`You Don't Have Any Review Posted`}></Nothing>
+            <Nothing title={`You Don't Have Any Property Bought 😥`}></Nothing>
           </div>
         )}
       </div>

@@ -45,6 +45,7 @@ const SignUp = () => {
     if (password.length < 6) {
       setError("password must be atleast 6 characters long!");
       toast.error("password must be atleast 6 characters long!");
+      setRegistering(false);
       setLoading(false);
       return;
     }
@@ -53,12 +54,21 @@ const SignUp = () => {
       setError("password must have atleast one lowercase letter!");
       toast.error("password must have atleast one lowercase letter!");
       setLoading(false);
+      setRegistering(false);
       return;
     }
     if (!/[A-Z]/.test(password)) {
       setError("password must have atleast one upperrcase letter!");
       toast.error("password must have atleast one upperrcase letter!");
       setLoading(false);
+      setRegistering(false);
+      return;
+    }
+    if (!/[^a-zA-Z0-9]/.test(password)) {
+      setError("password must have atleast one special character!");
+      toast.error("password must have atleast one special character!");
+      setLoading(false);
+      setRegistering(false);
       return;
     }
 

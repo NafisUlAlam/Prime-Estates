@@ -49,7 +49,7 @@ const SellerSoldPropertiesPage = () => {
         <h2>
           Your total sales:{" "}
           <span className="font-bold text-purple-400">
-            ${soldAmount?.totalAmount}
+            ${soldAmount?.totalAmount ? soldAmount?.totalAmount : "0"}
           </span>
         </h2>
       </div>

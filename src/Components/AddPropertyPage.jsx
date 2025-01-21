@@ -66,6 +66,7 @@ const AddPropertyPage = () => {
       onSuccess: () => {
         setIsPending(false);
         toast.success("Successfully added, please wait for admin approval");
+        e.target.reset();
       },
       onError: (error) => {
         setIsPending(false);

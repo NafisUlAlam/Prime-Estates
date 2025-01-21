@@ -8,8 +8,10 @@ import useRole from "../hooks/useRole";
 import MyModal from "./MyModal";
 import { useState } from "react";
 import Reviews from "./Reviews";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const PropertyDetails = () => {
+  useDocumentTitle(`Property Details|PrimeEstates`);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function close() {

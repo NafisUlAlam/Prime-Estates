@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import TitleAndSubTitle from "./TitleAndSubTitle";
 import Nothing from "./Nothing";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const AllProperties = () => {
+  useDocumentTitle(`All Properties|PrimeEstates`);
   const axiosSecure = useAxiosSecure();
 
   const [searchText, setSearchText] = useState("");

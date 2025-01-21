@@ -6,8 +6,10 @@ import Lotties from "./Lotties";
 import LatestReviews from "./LatestReviews";
 import Advertisements from "./Advertisements";
 import WhyChooseUs from "./WhyChooseUs";
+import useDocumentTitle from "../../../hooks/useDocumentTitle";
 
 const Home = () => {
+  useDocumentTitle(`Home|PrimeEstates`);
   return (
     <div>
       <Banner></Banner>

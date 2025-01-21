@@ -4,8 +4,10 @@ import { useState } from "react";
 import { FaBars } from "react-icons/fa6";
 import useRole from "../hooks/useRole";
 import PageLoading from "../Components/PageLoading";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const Dashboard = () => {
+  useDocumentTitle(`Dashboard|PrimeEstates`);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   //console.log("setting role in dashboard");
   //console.log("token", localStorage.getItem("access-token"));

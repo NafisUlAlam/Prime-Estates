@@ -26,6 +26,7 @@ import UpdatePropertyPage from "../Components/UpdatePropertyPage";
 import SellerOfferedPropertiesPage from "../Components/SellerOfferedPropertiesPage";
 import SellerSoldPropertiesPage from "../Components/SellerSoldPropertiesPage";
 import AdvertiseProperties from "../Components/AdvertiseProperties";
+import DashboardHome from "../Components/DashboardHome";
 
 const router = createBrowserRouter([
   {
@@ -47,7 +48,11 @@ const router = createBrowserRouter([
       },
       {
         path: "propertyDetails/:id",
-        element: <PropertyDetails></PropertyDetails>,
+        element: (
+          <PrivateRoute>
+            <PropertyDetails></PropertyDetails>
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -61,7 +66,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <p>this is dashboard</p>,
+        element: (
+          <PrivateRoute>
+            <DashboardHome></DashboardHome>
+          </PrivateRoute>
+        ),
       },
       //admin routes
       {

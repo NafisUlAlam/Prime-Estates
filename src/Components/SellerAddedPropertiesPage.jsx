@@ -10,6 +10,7 @@ import Swal from "sweetalert2";
 
 const SellerAddedPropertiesPage = () => {
   const { user } = useAuth();
+  //console.log("sending to axios");
   const axiosSecure = useAxiosSecure();
 
   //fetching all the properties of a seller based on his email id

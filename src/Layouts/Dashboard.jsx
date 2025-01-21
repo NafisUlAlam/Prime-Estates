@@ -7,6 +7,9 @@ import PageLoading from "../Components/PageLoading";
 
 const Dashboard = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  //console.log("setting role in dashboard");
+  //console.log("token", localStorage.getItem("access-token"));
+
   const [role, isLoading] = useRole();
   if (isLoading) return <PageLoading></PageLoading>;
   //console.log(role);

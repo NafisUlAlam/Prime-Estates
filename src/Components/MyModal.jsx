@@ -8,7 +8,7 @@ export default function MyModal({ close, isModalOpen, handleAddReview, id }) {
   const [rating, setRating] = useState(1);
   const handleSubmit = () => {
     //console.log(review);
-    console.log(rating);
+    //console.log(rating);
     handleAddReview(id, review, rating);
   };
   return (

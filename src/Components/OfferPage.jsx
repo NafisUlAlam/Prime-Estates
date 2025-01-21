@@ -69,7 +69,7 @@ const OfferPage = () => {
       buyingDate,
       status: "pending",
     };
-    console.log(offerObject);
+    //console.log(offerObject);
     offerPostMutation.mutate(offerObject);
   };
   return (

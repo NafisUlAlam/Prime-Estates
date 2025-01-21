@@ -3,11 +3,13 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
 import Theme from "./Theme";
+//import useRole from "../hooks/useRole";
 
 const Navbar = () => {
   const { user, logOut, loading } = useAuth();
   const navigate = useNavigate();
-
+  //const [role, isLoading] = useRole();
+  //console.log(role, isLoading);
   //console.log(location);
   //console.log(user?.photoURL);
 

@@ -27,7 +27,7 @@ const ManageUsers = () => {
 
   const markFraudPropertyMutation = useMutation({
     mutationFn: async ({ id, info }) => {
-      console.log(id, info);
+      //console.log(id, info);
       await axiosSecure.patch(`/reject-properties/${id}`, info);
     },
   });
@@ -102,7 +102,7 @@ const ManageUsers = () => {
     });
   };
   const handleMarkFraud = async (id) => {
-    console.log(id);
+    //console.log(id);
     const res = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -136,7 +136,7 @@ const ManageUsers = () => {
     }
   };
   const handleDeleteUser = (id) => {
-    console.log(id);
+    //console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",

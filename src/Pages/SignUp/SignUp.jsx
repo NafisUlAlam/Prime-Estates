@@ -198,6 +198,15 @@ const SignUp = () => {
             Login
           </Link>{" "}
         </p>
+        <div className="divider"></div>
+        <div className="text-center">
+          <button
+            className="btn bg-green-200 "
+            onClick={() => navigate("/", { replace: true })}
+          >
+            Home
+          </button>
+        </div>
       </div>
     </div>
   );

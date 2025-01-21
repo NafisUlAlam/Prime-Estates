@@ -19,7 +19,7 @@ const CheckoutForm = ({ offer }) => {
 
   const patchOfferMutation = useMutation({
     mutationFn: async ({ offerId, info }) => {
-      console.log(offerId, info);
+      //console.log(offerId, info);
       const { data } = await axiosSecure.patch(`/offers/${offerId}`, info);
       return data;
     },
@@ -51,7 +51,7 @@ const CheckoutForm = ({ offer }) => {
 
     if (error) {
       setError(error.message);
-      console.log("error from stripe", error);
+      //console.log("error from stripe", error);
     } else {
       setError("");
       console.log("payment method", paymentMethod);
@@ -70,14 +70,14 @@ const CheckoutForm = ({ offer }) => {
       });
 
     if (paymentError) {
-      console.log("payment error", paymentError);
+      //console.log("payment error", paymentError);
       Swal.fire({
         title: `${paymentError.message}`,
         text: "Could not complete payment",
         icon: "error",
       });
     } else {
-      console.log("payment intent", paymentIntent);
+      //console.log("payment intent", paymentIntent);
       if (paymentIntent.status === "succeeded") {
         //save to database
         const info = {

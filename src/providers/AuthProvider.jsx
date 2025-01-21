@@ -62,18 +62,22 @@ const AuthProvider = ({ children }) => {
         //console.log("jwt post");
         const userInfo = { email: currentUser.email };
         axiosPublic.post("/jwt", userInfo).then((res) => {
+          console.log(
+            "posting to jwt for the current user",
+            currentUser?.email
+          );
           if (res?.data?.token) {
             localStorage.setItem("access-token", res.data.token);
 
-            // console.log("token found from jwt", res.data.token);
-            // console.log(
-            //   "getting from localstorage",
+            //console.log("token found from jwt", res.data.token);
+            //console.log(
+            //  "getting from localstorage",
             //   localStorage.getItem("access-token")
             // );
 
             setLoading(false);
           } else {
-            console.log("no-token-found in onAuthStateChanged");
+            //console.log("no-token-found in onAuthStateChanged");
           }
         });
       } else {

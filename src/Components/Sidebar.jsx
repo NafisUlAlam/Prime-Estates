@@ -49,7 +49,7 @@ const Sidebar = ({ isOpen, onClose, role }) => {
         {role === "seller" && <SellerMenu></SellerMenu>}
 
         <button
-          className=" btn border-b border-b-blue-200 "
+          className=" btn border-b border-b-blue-200"
           onClick={handleLogOut}
         >
           Logout

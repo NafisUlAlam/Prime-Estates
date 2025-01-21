@@ -20,7 +20,7 @@ const PropertyBoughtPage = () => {
   });
 
   if (isPropertiesLoading) return <PageLoading></PageLoading>;
-  console.log(properties);
+  //console.log(properties);
   return (
     <div>
       <TitleAndSubTitle

@@ -22,7 +22,7 @@ const PaymentPage = () => {
   });
 
   if (isOfferLoading) return <PageLoading></PageLoading>;
-  console.log(offer);
+  //console.log(offer);
   const { offerAmount, propertyDetails, sellerDetails } = offer;
   return (
     <div>

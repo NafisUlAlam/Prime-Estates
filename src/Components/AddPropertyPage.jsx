@@ -29,7 +29,7 @@ const AddPropertyPage = () => {
     },
   });
   if (isFraudStatusLoading) return <PageLoading></PageLoading>;
-  console.log(currentUser);
+  //console.log(currentUser);
   const handleAddProperty = async (e) => {
     e.preventDefault();
 

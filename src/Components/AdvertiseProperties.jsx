@@ -30,10 +30,10 @@ const AdvertiseProperties = () => {
   });
 
   if (isVerifiedPropertiesLoading) return <PageLoading></PageLoading>;
-  console.log(verifiedProperties);
+  //console.log(verifiedProperties);
 
   const handleAdvertiseProperty = async (id) => {
-    console.log(id);
+    //console.log(id);
     const res = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",

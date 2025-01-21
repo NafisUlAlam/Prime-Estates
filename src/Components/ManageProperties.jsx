@@ -39,7 +39,7 @@ const ManageProperties = () => {
     });
     if (res.isConfirmed) {
       const status = { status: "verified" };
-      console.log(id, status);
+      //console.log(id, status);
       verifyPropertyMutation.mutate(
         { id, status },
         {
@@ -67,7 +67,7 @@ const ManageProperties = () => {
     });
     if (res.isConfirmed) {
       const status = { status: "rejected" };
-      console.log(id, status);
+      //console.log(id, status);
       verifyPropertyMutation.mutate(
         { id, status },
         {

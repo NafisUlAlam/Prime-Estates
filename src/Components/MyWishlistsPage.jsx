@@ -27,7 +27,7 @@ const MyWishlistsPage = () => {
 
   const deleteWishlistMutation = useMutation({
     mutationFn: async (id) => {
-      console.log("wish id", id);
+      //console.log("wish id", id);
       await axiosSecure.delete(`/wishlists/user/${id}`);
     },
     onSuccess: () => {
@@ -48,7 +48,7 @@ const MyWishlistsPage = () => {
   });
 
   const handleDelete = async (id) => {
-    console.log(id);
+    //console.log(id);
     const result = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -64,7 +64,7 @@ const MyWishlistsPage = () => {
   };
 
   if (isWishlistsLoading) return <PageLoading></PageLoading>;
-  console.log(wishlists);
+  //console.log(wishlists);
   return (
     <div>
       <TitleAndSubTitle

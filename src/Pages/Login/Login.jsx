@@ -39,6 +39,8 @@ const Login = () => {
         toast.success("You have signed in successfully.", {
           position: "top-center",
         });
+        //console.log("inside login", location?.state);
+        //console.log("token inside login", localStorage.getItem("access-token"));
         navigate(location?.state ? location.state : "/", { replace: true });
         setLoading(false);
       })
@@ -120,6 +122,15 @@ const Login = () => {
           </Link>{" "}
         </p>
         {error && <p className="text-xs text-red-500 text-center">{error}</p>}
+        <div className="divider"></div>
+        <div className="text-center">
+          <button
+            className="btn bg-green-200 "
+            onClick={() => navigate("/", { replace: true })}
+          >
+            Home
+          </button>
+        </div>
       </div>
     </div>
   );

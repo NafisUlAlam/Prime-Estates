@@ -9,14 +9,18 @@ const PrivateRoute = ({ children }) => {
   // if (location?.pathname.includes("dashboard/")) {
   //   location.pathname = "/";
   // }
-  const { user, loading } = useAuth();
+  const { user, loading, token } = useAuth();
   //console.log("inside private route");
   if (loading) {
     return <PageLoading></PageLoading>;
   }
-  if (user) return children;
-  // return <Navigate to={"/login"} state={location?.pathname} replace></Navigate>;
-  return <Navigate to={"/login"} replace></Navigate>;
+  if (user) {
+    //console.log(token);
+    if (!token) return <PageLoading></PageLoading>;
+    return children;
+  }
+  return <Navigate to={"/login"} state={location?.pathname} replace></Navigate>;
+  //return <Navigate to={"/login"} replace></Navigate>;
 };
 
 PrivateRoute.propTypes = {

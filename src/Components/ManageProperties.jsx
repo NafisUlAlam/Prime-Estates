@@ -157,14 +157,20 @@ const ManageProperties = () => {
                         <button
                           onClick={() => handleVerifyProperty(property._id)}
                           className="btn btn-success btn-sm"
+                          disabled={verifyPropertyMutation.isPending}
                         >
-                          Verify
+                          {verifyPropertyMutation.isPending
+                            ? "Verifying..."
+                            : "Verify"}
                         </button>
                         <button
                           onClick={() => handleRejectProperty(property._id)}
                           className="btn btn-error btn-sm"
+                          disabled={verifyPropertyMutation.isPending}
                         >
-                          Reject
+                          {verifyPropertyMutation.isPending
+                            ? "Rejecting..."
+                            : "Reject"}
                         </button>
                       </div>
                     </td>

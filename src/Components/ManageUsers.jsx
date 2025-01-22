@@ -25,12 +25,38 @@ const ManageUsers = () => {
     },
   });
 
+  const makeAdminMutation = useMutation({
+    mutationFn: async ({ id, role }) => {
+      await axiosSecure.patch(`/users/change/${id}`, role);
+    },
+  });
+
+  const makeSellerMutation = useMutation({
+    mutationFn: async ({ id, role }) => {
+      await axiosSecure.patch(`/users/change/${id}`, role);
+    },
+  });
+
+  const markFraudMutation = useMutation({
+    mutationFn: async ({ id, fraud }) => {
+      await axiosSecure.patch(`/markfraud/${id}`, fraud);
+    },
+  });
+
   const markFraudPropertyMutation = useMutation({
     mutationFn: async ({ id, info }) => {
       //console.log(id, info);
       await axiosSecure.patch(`/reject-properties/${id}`, info);
     },
   });
+
+  const deleteUserMutation = useMutation({
+    mutationFn: async ({ id }) => {
+      //console.log(id);
+      await axiosSecure.delete(`/users/${id}`);
+    },
+  });
+
   //console.log(users);
   if (isLoading) return <PageLoading></PageLoading>;
 
@@ -47,23 +73,23 @@ const ManageUsers = () => {
       confirmButtonText: "Yes!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure
-          .patch(`/users/change/${id}`, {
-            role: "admin",
-          })
-          .then((res) => {
-            if (res.data.modifiedCount > 0) {
+        const role = { role: "admin" };
+        makeAdminMutation.mutate(
+          { id, role },
+          {
+            onSuccess: () => {
               refetch();
               Swal.fire({
                 title: "Done!",
                 text: "Successfully changed role into admin",
                 icon: "success",
               });
-            }
-          })
-          .catch((err) => {
-            toast.error(err);
-          });
+            },
+            onError: (error) => {
+              toast.error(error.message);
+            },
+          }
+        );
       }
     });
   };
@@ -81,23 +107,23 @@ const ManageUsers = () => {
       confirmButtonText: "Yes!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure
-          .patch(`/users/change/${id}`, {
-            role: "seller",
-          })
-          .then((res) => {
-            if (res.data.modifiedCount > 0) {
+        const role = { role: "seller" };
+        makeSellerMutation.mutate(
+          { id, role },
+          {
+            onSuccess: () => {
               refetch();
               Swal.fire({
                 title: "Done!",
                 text: "Successfully changed role into seller",
                 icon: "success",
               });
-            }
-          })
-          .catch((err) => {
-            toast.error(err);
-          });
+            },
+            onError: (error) => {
+              toast.error(error.message);
+            },
+          }
+        );
       }
     });
   };
@@ -113,30 +139,29 @@ const ManageUsers = () => {
       confirmButtonText: "Yes!",
     });
     if (res.isConfirmed) {
-      try {
-        const { data } = await axiosSecure.patch(`/markfraud/${id}`, {
-          fraud: "fraud",
-        });
-        //console.log(data);
-        // to do : properties need to be rejected here based on the seller id
-        if (data.modifiedCount > 0) {
-          refetch();
-          Swal.fire({
-            title: "Done!",
-            text: "Successfully marked as Fraud!",
-            icon: "success",
-          });
-          //after marking this seller id with fraud, we need to reject all his properties
-          const info = { status: "rejected" };
-          markFraudPropertyMutation.mutate({ id, info });
+      const fraud = { fraud: "fraud" };
+      markFraudMutation.mutate(
+        { id, fraud },
+        {
+          onSuccess: () => {
+            refetch();
+            Swal.fire({
+              title: "Done!",
+              text: "Successfully marked as Fraud!",
+              icon: "success",
+            });
+            const info = { status: "rejected" };
+            markFraudPropertyMutation.mutate({ id, info });
+          },
+          onError: (error) => {
+            toast.error(error.message);
+          },
         }
-      } catch (error) {
-        toast.error(error);
-      }
+      );
     }
   };
   const handleDeleteUser = (id) => {
-    //console.log(id);
+    console.log(id);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -147,25 +172,26 @@ const ManageUsers = () => {
       confirmButtonText: "Yes!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axiosSecure
-          .delete(`/users/${id}`)
-          .then((res) => {
-            //console.log(res.data);
-            if (res.data.deletedCount > 0) {
+        deleteUserMutation.mutate(
+          { id },
+          {
+            onSuccess: () => {
               refetch();
               Swal.fire({
                 title: "Done!",
                 text: "Successfully deleted the user",
                 icon: "success",
               });
-            }
-          })
-          .catch((err) => {
-            toast.error(err);
-          });
+            },
+            onError: (error) => {
+              toast.error(error.message);
+            },
+          }
+        );
       }
     });
   };
+
   return (
     <>
       <TitleAndSubTitle
@@ -214,8 +240,15 @@ const ManageUsers = () => {
                       <button
                         className="btn btn-primary "
                         onClick={() => handleMakeAdmin(user._id)}
+                        disabled={
+                          makeAdminMutation.isPending &&
+                          makeAdminMutation.variables.id === user._id
+                        }
                       >
-                        Make Admin
+                        {makeAdminMutation.isPending &&
+                        makeAdminMutation.variables.id === user._id
+                          ? "Wait..."
+                          : "Make Admin"}
                       </button>
                     )}
 
@@ -224,8 +257,15 @@ const ManageUsers = () => {
                       <button
                         className="btn btn-success "
                         onClick={() => handleMakeSeller(user._id)}
+                        disabled={
+                          makeSellerMutation.isPending &&
+                          makeSellerMutation.variables.id === user._id
+                        }
                       >
-                        Make Seller
+                        {makeSellerMutation.isPending &&
+                        makeSellerMutation.variables.id === user._id
+                          ? "Wait..."
+                          : "Make Seller"}
                       </button>
                     )}
 
@@ -234,8 +274,15 @@ const ManageUsers = () => {
                       <button
                         className="btn btn-error "
                         onClick={() => handleMarkFraud(user._id)}
+                        disabled={
+                          markFraudMutation.isPending &&
+                          markFraudMutation.variables.id === user._id
+                        }
                       >
-                        Mark as Fraud
+                        {markFraudMutation.isPending &&
+                        markFraudMutation.variables.id === user._id
+                          ? "Wait..."
+                          : "Mark As Fraud"}
                       </button>
                     )}
                     {user.role === "seller" && user.fraud === "fraud" && (
@@ -246,8 +293,15 @@ const ManageUsers = () => {
                     <button
                       className="btn bg-red-200  text-red-500 "
                       onClick={() => handleDeleteUser(user._id)}
+                      disabled={
+                        deleteUserMutation.isPending &&
+                        deleteUserMutation.variables.id === user._id
+                      }
                     >
-                      Delete
+                      {deleteUserMutation.isPending &&
+                      deleteUserMutation.variables.id === user._id
+                        ? "Wait..."
+                        : "Delete"}
                     </button>
                   </div>
                 </td>

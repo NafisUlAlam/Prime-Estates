@@ -60,8 +60,13 @@ const PropertyDetails = () => {
   if (isPropertyLoading || isSellerLoading || isUserLoading || isReviewsLoading)
     return <PageLoading></PageLoading>;
 
+  console.log(property);
   const handleAddToWishlist = async (id) => {
     //console.log(id);
+    if (property.sold === "true") {
+      toast.error("Sorry This property has already been sold");
+      return;
+    }
     const wishlistInfo = {
       propertyId: id,
       propertyPhotoURL: property?.photoURL,

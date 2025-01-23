@@ -18,7 +18,7 @@ const Advertisements = () => {
     });
 
   if (isAdvertisementsLoading) return <PageLoading></PageLoading>;
-  //console.log(advertisements);
+  console.log(advertisements);
   return (
     <div>
       <TitleAndSubTitle

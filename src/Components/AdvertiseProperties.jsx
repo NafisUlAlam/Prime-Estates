@@ -132,9 +132,13 @@ const AdvertiseProperties = () => {
                         <button
                           onClick={() => handleAdvertiseProperty(property._id)}
                           className="btn bg-green-200 btn-sm"
-                          disabled={advertiseMutation.isPending}
+                          disabled={
+                            advertiseMutation.isPending &&
+                            advertiseMutation.variables.id === property._id
+                          }
                         >
-                          {advertiseMutation.isPending
+                          {advertiseMutation.isPending &&
+                          advertiseMutation.variables.id === property._id
                             ? "Processing..."
                             : "Advertise"}
                         </button>

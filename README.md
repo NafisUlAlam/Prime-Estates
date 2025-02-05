@@ -1,6 +1,7 @@
 # Project Title
 
 - Prime Estates
+  ![Project Screenshot](public/project-ss.png)
 
 # Live Link
 
@@ -15,8 +16,8 @@
 
 - In this website, users can register using their email and password, also they can use their google credentials for seamless login experience. There are three roles (Admin, Buyers and Sellers). Admin can manage properties (verify, delete), manage users etc. Buyers can add any property to their wishlist and bid their prices. They can also post reviews on properties. Sellers can add properties which need to be verified by the admins first and then they can be sold. Sellers can also update the properties. If a bid is successful, the buyer can pay through Stripe and buy the property.
 
-
 ## Features
+
 - **Users** can:
   - Browse properties and place bids
   - Wishlist properties for later viewing
@@ -29,6 +30,7 @@
   - Take administrative actions to ensure smooth platform operation
 
 ## Tech Stack
+
 - **Frontend:** React, Tailwind CSS, DaisyUI
 - **Backend:** Node.js, Express, MongoDB
 - **Authentication:** Firebase Authentication
@@ -37,7 +39,9 @@
 - **API Requests:** Axios
 
 ## Dependencies
+
 ### Main Dependencies
+
 ```json
 {
   "@emotion/react": "^11.13.5",
@@ -65,6 +69,7 @@
 ```
 
 ### Dev Dependencies
+
 ```json
 {
   "@eslint/js": "^9.17.0",
@@ -85,6 +90,7 @@
 ```
 
 ## Environment Variables
+
 To run this project, you need to set up the following environment variables in a `.env` file:
 
 ```
@@ -100,6 +106,7 @@ VITE_SERVER_ADDRESS=YOUR_SERVER_URL
 ```
 
 **Backend Environment Variables:**
+
 ```
 DB_USER=YOUR_DATABASE_USERNAME
 DB_PASS=YOUR_DATABASE_PASSWORD
@@ -110,6 +117,7 @@ STRIPE_SK=YOUR_STRIPE_SECRET_KEY
 > ⚠ **Important:** Do not expose your environment variables publicly.
 
 ## Installation
+
 1. **Clone the repository:**
    ```sh
    git clone https://github.com/NafisUlAlam/Prime-Estates.git
@@ -127,13 +135,15 @@ STRIPE_SK=YOUR_STRIPE_SECRET_KEY
    ```
 
 ## Usage
+
 - Access the platform at `http://localhost:5173`
 - Use the provided authentication methods to log in
 - Explore property listings, bid, and manage properties
 
 ## Contributing
+
 Contributions are welcome! Feel free to submit issues or pull requests.
 
 ## License
-This project is licensed under the MIT License.
 
+This project is licensed under the MIT License.

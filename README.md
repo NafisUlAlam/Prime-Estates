@@ -1,6 +1,4 @@
-# Project Title
-
-## Prime Estates
+# Prime Estates
 
 ![Project Screenshot](public/project-ss.png)
 

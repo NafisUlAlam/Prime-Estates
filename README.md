@@ -1,7 +1,8 @@
 # Project Title
 
-- Prime Estates
-  ![Project Screenshot](public/project-ss.png)
+## Prime Estates
+
+![Project Screenshot](public/project-ss.png)
 
 # Live Link
 

@@ -1,3 +1,12 @@
+const giveColorOutput = (variable) => {
+  return ({ opacityValue }) => {
+    console.log(opacityValue);
+    if (opacityValue !== undefined)
+      return `rgba(var(${variable}), ${opacityValue})`;
+    return `rgb(var(${variable}))`;
+  };
+};
+
 /** @type {import('tailwindcss').Config} */
 import daisyui from "daisyui";
 export default {
@@ -19,11 +28,11 @@ export default {
         heroBanner5: "url(https://i.ibb.co.com/j51jh2w/bannerimg5.jpg)",
       },
       colors: {
-        text: "rgb(var(--text))",
-        background: "rgb(var(--background))",
-        primary: "rgb(var(--primary))",
-        secondary: "rgb(var(--secondary))",
-        accent: "rgb(var(--accent))",
+        text: giveColorOutput("--text"),
+        background: giveColorOutput("--background"),
+        primary: giveColorOutput("--primary"),
+        secondary: giveColorOutput("--secondary"),
+        accent: giveColorOutput("--accent"),
       },
     },
   },

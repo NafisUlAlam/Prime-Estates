@@ -7,7 +7,7 @@ const HomePageReviewCard = ({ review }) => {
   if (review.timeStamp) ago = formatDistance(new Date(), review.timeStamp);
   //flex flex-col items-center justify-center
   return (
-    <div className=" space-y-4 grid row-span-6 grid-rows-subgrid text-center p-4  lg:space-y-0 bg-transparent lg:gap-4 max-w-2xl min-h-[500px] mr-8 text-gray-200">
+    <div className=" space-y-4 grid row-span-6 grid-rows-subgrid text-center p-4  lg:space-y-0 bg-transparent lg:gap-4 max-w-2xl min-h-[500px] mr-8 text-text">
       <div className="avatar flex justify-center">
         <div className="w-24 h-24 object-cover rounded-full">
           <img src={review.reviewerPhotoURL} alt={review.reviewerName} />

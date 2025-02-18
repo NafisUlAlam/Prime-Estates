@@ -11,7 +11,7 @@ import useDocumentTitle from "../../../hooks/useDocumentTitle";
 const Home = () => {
   useDocumentTitle(`Home|PrimeEstates`);
   return (
-    <div>
+    <div className="space-y-16">
       <Banner></Banner>
       <Slide direction="right">
         <Motto></Motto>

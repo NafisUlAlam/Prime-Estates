@@ -18,3 +18,15 @@
     --accent: 26, 10, 0;
   }
 }
+
+.navlink-btn {
+  @apply btn p-4 bg-background text-text border-0 rounded-lg hover:bg-secondary/60 transition-colors;
+}
+
+.primary-btn {
+  @apply btn p-4 bg-primary text-text border border-text rounded-lg hover:bg-primary/60 transition-colors;
+}
+
+.property-card {
+  @apply card bg-primary/20 shadow-xl hover:shadow-2xl transition border border-text;
+}

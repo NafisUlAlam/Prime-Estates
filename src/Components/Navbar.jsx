@@ -16,27 +16,33 @@ const Navbar = () => {
   //navbar links
   const links = (
     <>
-      <button className="btn">
+      <button className="navlink-btn">
         <NavLink
           to="/"
-          className={({ isActive }) => (isActive ? "text-red-400 " : "")}
+          className={({ isActive }) =>
+            isActive ? "text-red-400 " : "text-text"
+          }
         >
           Home
         </NavLink>
       </button>
 
-      <button className="btn">
+      <button className="navlink-btn">
         <NavLink
           to="/allproperties"
-          className={({ isActive }) => (isActive ? "text-red-400 " : "")}
+          className={({ isActive }) =>
+            isActive ? "text-red-400 " : "text-text"
+          }
         >
           All Properties
         </NavLink>
       </button>
-      <button className="btn">
+      <button className="navlink-btn">
         <NavLink
           to="/dashboard"
-          className={({ isActive }) => (isActive ? "text-red-400 " : "")}
+          className={({ isActive }) =>
+            isActive ? "text-red-400 " : "text-text"
+          }
         >
           Dashboard
         </NavLink>
@@ -63,7 +69,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" bg-primary sticky top-0 z-10 backdrop-blur-md">
+    <div className=" bg-primary/50 sticky top-0 z-10 backdrop-blur-md">
       <div className="w-11/12 mx-auto navbar">
         <div className="navbar-start">
           <div className="dropdown">
@@ -90,10 +96,7 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link
-            to="/"
-            className=" font-bold text-text lg:text-2xl  gradient-text"
-          >
+          <Link to="/" className=" font-bold  lg:text-2xl  text-text">
             PrimeEstates
           </Link>
         </div>
@@ -115,21 +118,21 @@ const Navbar = () => {
                   {user.displayName} <br />
                 </span>
               </div>
-              <button onClick={handleLogOut} className="btn">
+              <button onClick={handleLogOut} className="navlink-btn">
                 Logout
               </button>
             </div>
           ) : (
-            <div className="flex items-center gap-2">
+            <button className="navlink-btn">
               <NavLink
                 to="/login"
                 className={({ isActive }) =>
-                  isActive ? "text-red-400 btn" : "btn"
+                  isActive ? "text-red-400" : "text-text"
                 }
               >
                 Login
               </NavLink>
-            </div>
+            </button>
           )}
           <div className="ml-4">
             <Theme></Theme>

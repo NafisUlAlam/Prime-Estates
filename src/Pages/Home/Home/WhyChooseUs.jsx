@@ -1,7 +1,7 @@
 const WhyChooseUs = () => {
   return (
     <div>
-      <div className="card lg:card-side bg-blue-50 shadow-xl">
+      <div className="card text-text lg:card-side bg-primary/20 shadow-xl">
         <figure className="lg:w-1/2">
           <img
             src="https://i.ibb.co.com/6YJBBXG/img-w-text1.jpg"
@@ -16,7 +16,7 @@ const WhyChooseUs = () => {
             Our seasoned team excels in real estate with years of successful
             market navigation, offering informed decisions and optimal results.
           </p>
-          <div className="bg-base-100 p-4 flex rounded-2xl items-center gap-4 my-4">
+          <div className="bg-background p-4 flex rounded-2xl items-center gap-4 my-4">
             <div>
               <img
                 src={"https://i.ibb.co.com/Hxcy0pj/6747196.png"}
@@ -32,7 +32,7 @@ const WhyChooseUs = () => {
               </p>
             </div>
           </div>
-          <div className="bg-base-100 p-4 flex rounded-2xl items-center gap-4 my-4">
+          <div className="bg-background p-4 flex rounded-2xl items-center gap-4 my-4">
             <div>
               <img
                 src={"https://i.ibb.co.com/HKLs75j/3146970-200.png"}
@@ -48,7 +48,7 @@ const WhyChooseUs = () => {
               </p>
             </div>
           </div>
-          <div className="bg-base-100 p-4 flex rounded-2xl items-center gap-4 my-4">
+          <div className="bg-background p-4 flex rounded-2xl items-center gap-4 my-4">
             <div>
               <img
                 src={"https://i.ibb.co.com/4MDbtsP/9252138.png"}

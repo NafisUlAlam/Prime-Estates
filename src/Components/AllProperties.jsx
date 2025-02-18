@@ -76,10 +76,7 @@ const AllProperties = () => {
       {allProperties.length > 0 && (
         <div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {allProperties.map((property) => (
-            <div
-              key={property._id}
-              className="card bg-base-100 shadow-xl hover:shadow-2xl transition"
-            >
+            <div key={property._id} className="property-card">
               <figure className="relative">
                 <img
                   src={property.photoURL}
@@ -99,9 +96,9 @@ const AllProperties = () => {
                   ${property.minPrice} - ${property.maxPrice}
                 </p>
               </figure>
-              <div className="card-body">
-                <h2 className="card-title">{property.title}</h2>
-                <p className="text-gray-600">{property.location}</p>
+              <div className="card-body text-text">
+                <h2 className="card-title ">{property.title}</h2>
+                <p className="text-text/50">{property.location}</p>
                 <div className="flex items-center space-x-3 my-3">
                   <img
                     src={property.sellerPhotoURL || "/placeholder-user.png"}
@@ -114,7 +111,7 @@ const AllProperties = () => {
 
                 <div className="card-actions justify-end mt-4">
                   <Link to={`/propertyDetails/${property._id}`}>
-                    <button className="btn btn-primary btn-sm">Details</button>
+                    <button className="primary-btn">Details</button>
                   </Link>
                 </div>
               </div>

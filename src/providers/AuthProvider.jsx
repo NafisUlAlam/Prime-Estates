@@ -97,14 +97,15 @@ const AuthProvider = ({ children }) => {
   }, [axiosPublic]);
 
   //theme
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
-  );
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    const localTheme = localStorage.getItem("theme");
-    document.querySelector("html").setAttribute("data-theme", localTheme);
-  }, [theme]);
+  // const [theme, setTheme] = useState(
+  //   localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  // );
+  // useEffect(() => {
+  //   localStorage.setItem("theme", theme);
+  //   const localTheme = localStorage.getItem("theme");
+  //   document.querySelector("html").setAttribute("data-theme", localTheme);
+  // }, [theme]);
+
   const authInfo = {
     signUp,
     signIn,
@@ -115,8 +116,8 @@ const AuthProvider = ({ children }) => {
     setLoading,
     googleSignIn,
     updateUserProfile,
-    theme,
-    setTheme,
+    //theme,
+    //setTheme,
     token,
   };
   //console.log(typeof children);

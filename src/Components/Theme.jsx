@@ -1,21 +1,28 @@
-import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthContext";
+import { useEffect, useState } from "react";
 
 const Theme = () => {
-  const { setTheme, theme } = useContext(AuthContext);
+  //const { setTheme, theme } = useContext(AuthContext);
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark" ? true : false
+  );
   const handleToggle = (e) => {
     //console.log(e.target.checked);
-    if (e.target.checked) setTheme("dark");
-    else setTheme("light");
+    if (e.target.checked) setDarkMode(true);
+    else setDarkMode(false);
   };
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
   return (
     <label className="swap swap-rotate">
       {/* this hidden checkbox controls the state */}
-      <input
-        type="checkbox"
-        onChange={handleToggle}
-        checked={theme === "light" ? false : true}
-      />
+      <input type="checkbox" onChange={handleToggle} checked={darkMode} />
 
       {/* sun icon */}
       <svg

@@ -18,6 +18,13 @@ export default {
         heroBanner4: "url(https://i.ibb.co.com/fQLTCS7/bannerimg4.jpg)",
         heroBanner5: "url(https://i.ibb.co.com/j51jh2w/bannerimg5.jpg)",
       },
+      colors: {
+        text: "rgb(var(--text))",
+        background: "rgb(var(--background))",
+        primary: "rgb(var(--primary))",
+        secondary: "rgb(var(--secondary))",
+        accent: "rgb(var(--accent))",
+      },
     },
   },
   plugins: [daisyui],

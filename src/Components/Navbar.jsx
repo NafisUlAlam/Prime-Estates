@@ -89,10 +89,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link
-          to="/"
-          className=" font-bold text-base lg:text-2xl  gradient-text"
-        >
+        <Link to="/" className=" font-bold  lg:text-2xl  gradient-text">
           PrimeEstates
         </Link>
       </div>

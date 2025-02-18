@@ -103,7 +103,7 @@ const AllProperties = () => {
                   <img
                     src={property.sellerPhotoURL || "/placeholder-user.png"}
                     alt={property.sellerName}
-                    className="w-10 h-10 rounded-full border"
+                    className="w-10 h-10 rounded-full border object-cover"
                   />
 
                   <span className="font-semibold">{property.sellerName}</span>

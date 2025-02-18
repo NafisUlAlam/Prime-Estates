@@ -14,7 +14,7 @@ const HomePageReviewCard = ({ review }) => {
         </div>
       </div>
       <p className="font-light text-sm ">{review.reviewerName}</p>
-      <h1 className="text-lg font-extrabold  ">{review.propertyTitle}</h1>
+      <h1 className="text-lg font-bold">{review.propertyTitle}</h1>
       <p className="text-sm font-medium ">{review.reviewDescription}</p>
       <div className="grid place-content-center">
         <Rating value={review.rating}></Rating>

@@ -25,7 +25,7 @@ const Reviews = ({ reviews }) => {
         <ul className="space-y-4">
           {reviews.map((review, index) => (
             <Slide key={review._id} direction="right" delay={100 * (index + 1)}>
-              <li className="bg-base-200 p-4 rounded-lg shadow ">
+              <li className="bg-primary/20 p-4 rounded-lg shadow ">
                 <div className="flex items-center space-x-4">
                   <div className="w-[20%] ">
                     <div className="flex flex-col items-center">

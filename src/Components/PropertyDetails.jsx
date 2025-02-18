@@ -122,7 +122,7 @@ const PropertyDetails = () => {
   return (
     <div>
       {/* // property Details */}
-      <div className="max-w-4xl mx-auto p-4 bg-white shadow-md rounded-md">
+      <div className="max-w-4xl bg-primary/20 border border-text mx-auto p-4  shadow-md rounded-lg text-text">
         <img
           src={property.photoURL}
           alt={property.title}
@@ -141,7 +141,7 @@ const PropertyDetails = () => {
             {property.title}
           </h1>
         </div>
-        <p className="text-gray-600 mt-2">{property.description}</p>
+        <p className="text mt-2">{property.description}</p>
         <p className="text-lg mt-4">
           <strong>
             {" "}
@@ -153,7 +153,7 @@ const PropertyDetails = () => {
           <button
             disabled={role !== "buyer"}
             onClick={() => handleAddToWishlist(id)}
-            className="mt-6 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 btn"
+            className="mt-6  primary-btn"
           >
             Add to Wishlist
           </button>
@@ -162,7 +162,7 @@ const PropertyDetails = () => {
             onClick={() => {
               setIsModalOpen(true);
             }}
-            className="mt-6 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 btn"
+            className="mt-6 primary-btn"
           >
             Leave a Review
           </button>

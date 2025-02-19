@@ -1,6 +1,6 @@
 const giveColorOutput = (variable) => {
   return ({ opacityValue }) => {
-    console.log(opacityValue);
+    //console.log(opacityValue);
     if (opacityValue !== undefined)
       return `rgba(var(${variable}), ${opacityValue})`;
     return `rgb(var(${variable}))`;

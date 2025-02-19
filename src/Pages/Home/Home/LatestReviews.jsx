@@ -16,7 +16,10 @@ const LatestReviews = () => {
   if (isReviewsLoading) return <PageLoading></PageLoading>;
   //console.log(reviews);
   return (
-    <section className="py-6 lg:py-12 bg-primary/20 text-text rounded-lg">
+    <section
+      className="py-6 lg:py-12 bg-primary/20 text-text rounded-lg"
+      id="reviews"
+    >
       <div className="text-center space-y-4 w-11/12 mx-auto mb-6 lg:mb-12 lg:mt-12 ">
         <h1 className=" text-xl font-bold md:text-2xl lg:text-4xl text-center my-8 ">
           Our Satisfied Customers

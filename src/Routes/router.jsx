@@ -27,6 +27,8 @@ import SellerOfferedPropertiesPage from "../Components/SellerOfferedPropertiesPa
 import SellerSoldPropertiesPage from "../Components/SellerSoldPropertiesPage";
 import AdvertiseProperties from "../Components/AdvertiseProperties";
 import DashboardHome from "../Components/DashboardHome";
+import AboutUs from "../Components/AboutUs";
+import ContactUs from "../Components/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "about",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "contact",
+        element: <ContactUs></ContactUs>,
       },
       {
         path: "allproperties",

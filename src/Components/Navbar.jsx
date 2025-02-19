@@ -47,6 +47,26 @@ const Navbar = () => {
           Dashboard
         </NavLink>
       </button>
+      <button className="navlink-btn">
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive ? "text-red-400 " : "text-text"
+          }
+        >
+          About Us
+        </NavLink>
+      </button>
+      <button className="navlink-btn">
+        <NavLink
+          to="/contact"
+          className={({ isActive }) =>
+            isActive ? "text-red-400 " : "text-text"
+          }
+        >
+          Contact Us
+        </NavLink>
+      </button>
     </>
   );
 

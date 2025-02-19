@@ -6,11 +6,12 @@ import { useState } from "react";
 import TitleAndSubTitle from "./TitleAndSubTitle";
 import Nothing from "./Nothing";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import { CiLocationOn } from "react-icons/ci";
 
 const AllProperties = () => {
   useDocumentTitle(`All Properties|PrimeEstates`);
   const axiosSecure = useAxiosSecure();
-
+  const [isAsc, setIsAsc] = useState("");
   const [searchText, setSearchText] = useState("");
   const [allProperties, setAllProperties] = useState([]);
 
@@ -34,11 +35,22 @@ const AllProperties = () => {
     setAllProperties(newArray);
   };
 
-  const handleSort = () => {
+  const handleSort = (e) => {
+    //console.log(e.target.value);
+    setIsAsc(e.target.value);
     const newArray = [...allProperties];
-    newArray.sort((a, b) => a.minPrice - b.minPrice);
-    setAllProperties(newArray);
+    if (e.target.value === "asc") {
+      //console.log("asc sort");
+      newArray.sort((a, b) => a.minPrice - b.minPrice);
+      setAllProperties(newArray);
+    } else if (e.target.value === "des") {
+      newArray.sort((a, b) => b.minPrice - a.minPrice);
+      setAllProperties(newArray);
+    }
+
+    //console.log("inside sort", isAsc, allProperties, newArray);
   };
+
   return (
     <div>
       <TitleAndSubTitle
@@ -47,6 +59,7 @@ const AllProperties = () => {
           "Discover a curated collection of properties verified for quality, authenticity, and trust. Explore your dream home or investment opportunity with confidence."
         }
       ></TitleAndSubTitle>
+      <h2>{isAsc}</h2>
       <div className="flex justify-center items-center gap-4 my-4">
         <label className="input input-bordered flex items-center gap-2">
           <input
@@ -69,9 +82,22 @@ const AllProperties = () => {
             />
           </svg>
         </label>
-        <button className="btn bg-green-100" onClick={handleSort}>
+        <select
+          name="sort"
+          id=""
+          className="bg-accent p-4 rounded-lg"
+          value={isAsc}
+          onChange={handleSort}
+        >
+          <option value="" disabled>
+            Sort By Minimum Price
+          </option>
+          <option value="asc">Ascending</option>
+          <option value="des">Descending</option>
+        </select>
+        {/* <button className="btn bg-accent" onClick={handleSort}>
           Sort By Price
-        </button>
+        </button> */}
       </div>
       {allProperties.length > 0 && (
         <div className="p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -98,7 +124,10 @@ const AllProperties = () => {
               </figure>
               <div className="card-body text-text">
                 <h2 className="card-title ">{property.title}</h2>
-                <p className="text-text/50">{property.location}</p>
+                <p className="text-text/50 flex gap-2 items-center lg:text-xl">
+                  <CiLocationOn className="text-red-400 font-bold" />
+                  {property.location}
+                </p>
                 <div className="flex items-center space-x-3 my-3">
                   <img
                     src={property.sellerPhotoURL || "/placeholder-user.png"}

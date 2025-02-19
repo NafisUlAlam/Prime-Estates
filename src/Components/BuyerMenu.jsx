@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 const BuyerMenu = () => {
   const links = (
-    <>
-      <button className="btn border-b border-b-blue-200">
+    <div className="space-y-4">
+      <button className="secondary-btn">
         <NavLink
           to="/"
           className={({ isActive }) => (isActive ? "text-red-400 " : "")}
@@ -12,7 +12,7 @@ const BuyerMenu = () => {
         </NavLink>
       </button>
 
-      <button className="btn border-b border-b-blue-200">
+      <button className="secondary-btn">
         <NavLink
           to="buyerprofile"
           className={({ isActive }) => (isActive ? "text-red-400 " : "")}
@@ -20,7 +20,7 @@ const BuyerMenu = () => {
           My Profile
         </NavLink>
       </button>
-      <button className="btn border-b border-b-blue-200">
+      <button className="secondary-btn">
         <NavLink
           to="wishlist"
           className={({ isActive }) => (isActive ? "text-red-400 " : "")}
@@ -28,7 +28,7 @@ const BuyerMenu = () => {
           My Wishlist
         </NavLink>
       </button>
-      <button className="btn border-b border-b-blue-200">
+      <button className="secondary-btn">
         <NavLink
           to="propertybought"
           className={({ isActive }) => (isActive ? "text-red-400 " : "")}
@@ -36,7 +36,7 @@ const BuyerMenu = () => {
           Properties Bought
         </NavLink>
       </button>
-      <button className="btn border-b border-b-blue-200">
+      <button className="secondary-btn">
         <NavLink
           to="myreviews"
           className={({ isActive }) => (isActive ? "text-red-400 " : "")}
@@ -44,7 +44,7 @@ const BuyerMenu = () => {
           My Reviews
         </NavLink>
       </button>
-    </>
+    </div>
   );
   return links;
 };

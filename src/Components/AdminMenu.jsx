@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 const AdminMenu = () => {
   const links = (
-    <>
-      <button className="btn border-b border-b-blue-200">
+    <div className="space-y-4">
+      <button className="secondary-btn">
         <NavLink
           to="/"
           className={({ isActive }) => (isActive ? "text-red-400 " : "")}
@@ -12,7 +12,7 @@ const AdminMenu = () => {
         </NavLink>
       </button>
 
-      <button className="btn border-b border-b-blue-200">
+      <button className="secondary-btn">
         <NavLink
           to="adminprofile"
           className={({ isActive }) => (isActive ? "text-red-400 " : "")}
@@ -20,7 +20,7 @@ const AdminMenu = () => {
           Admin Profile
         </NavLink>
       </button>
-      <button className="btn border-b border-b-blue-200">
+      <button className="secondary-btn">
         <NavLink
           to="manageusers"
           className={({ isActive }) => (isActive ? "text-red-400 " : "")}
@@ -28,7 +28,7 @@ const AdminMenu = () => {
           Manage Users
         </NavLink>
       </button>
-      <button className="btn border-b border-b-blue-200">
+      <button className="secondary-btn">
         <NavLink
           to="manageproperties"
           className={({ isActive }) => (isActive ? "text-red-400 " : "")}
@@ -36,7 +36,7 @@ const AdminMenu = () => {
           Manage Properties
         </NavLink>
       </button>
-      <button className="btn border-b border-b-blue-200">
+      <button className="secondary-btn">
         <NavLink
           to="managereviews"
           className={({ isActive }) => (isActive ? "text-red-400 " : "")}
@@ -44,7 +44,7 @@ const AdminMenu = () => {
           Manage Reviews
         </NavLink>
       </button>
-      <button className="btn border-b border-b-blue-200">
+      <button className="secondary-btn">
         <NavLink
           to="advertiseproperty"
           className={({ isActive }) => (isActive ? "text-red-400 " : "")}
@@ -52,7 +52,7 @@ const AdminMenu = () => {
           Advertise Properties
         </NavLink>
       </button>
-    </>
+    </div>
   );
   return links;
 };

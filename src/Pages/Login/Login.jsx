@@ -106,7 +106,9 @@ const Login = () => {
             </label>
           </div>
           <div className="form-control mt-6">
-            <button className="btn btn-primary">Log In</button>
+            <button className="btn btn-outline hover:bg-primary hover:text-text">
+              Log In
+            </button>
           </div>
         </form>
         <SocialLogin></SocialLogin>
@@ -125,7 +127,7 @@ const Login = () => {
         <div className="divider"></div>
         <div className="text-center">
           <button
-            className="btn bg-green-200 "
+            className="primary-btn bg-green-200 "
             onClick={() => navigate("/", { replace: true })}
           >
             Home

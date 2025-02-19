@@ -43,7 +43,7 @@ const SocialLogin = () => {
   };
   return (
     <div className="text-center">
-      <button className="btn  w-max py-4 btn-accent" onClick={handleClick}>
+      <button className="primary-btn  w-max py-4" onClick={handleClick}>
         <FaGoogle></FaGoogle>Sign In With Google
       </button>
     </div>

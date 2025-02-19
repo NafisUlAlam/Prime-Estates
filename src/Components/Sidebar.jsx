@@ -28,9 +28,9 @@ const Sidebar = ({ isOpen, onClose, role }) => {
   };
   return (
     <div
-      className={`fixed lg:static z-40 transform ${
+      className={`fixed h-full z-40 transform ${
         isOpen ? "translate-x-0" : "-translate-x-full"
-      } lg:translate-x-0 transition-transform duration-300 bg-base-200  w-1/4  flex flex-col shadow-lg border-r-2`}
+      } lg:translate-x-0 transition-transform duration-300 bg-primary  w-1/4  flex flex-col `}
     >
       {/* Header for Mobile */}
       <div className="flex justify-end items-center p-4 lg:hidden">
@@ -40,7 +40,7 @@ const Sidebar = ({ isOpen, onClose, role }) => {
       </div>
 
       {/* Menu Items */}
-      <ul className="menu flex-1 p-4">
+      <ul className="menu flex-1 p-0">
         {/* admin menu */}
         {/* buyer menu */}
         {/* seller menu */}
@@ -48,10 +48,7 @@ const Sidebar = ({ isOpen, onClose, role }) => {
         {role === "buyer" && <BuyerMenu></BuyerMenu>}
         {role === "seller" && <SellerMenu></SellerMenu>}
 
-        <button
-          className=" btn border-b border-b-blue-200"
-          onClick={handleLogOut}
-        >
+        <button className="secondary-btn mt-4" onClick={handleLogOut}>
           Logout
         </button>
       </ul>

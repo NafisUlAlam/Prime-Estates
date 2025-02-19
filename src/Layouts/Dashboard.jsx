@@ -25,12 +25,12 @@ const Dashboard = () => {
       />
 
       {/* Main Content */}
-      <div className="flex-1 bg-base-100 p-4">
+      <div className="flex-1 lg:ml-[250px] bg-secondary p-4">
         {/* Mobile Menu Button */}
 
         <div className="lg:hidden flex justify-end items-center">
           <button
-            className="btn bg-green-100 px-4 py-2"
+            className="primary-btn px-4 py-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <FaBars />

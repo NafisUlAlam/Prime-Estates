@@ -26,6 +26,9 @@
 .primary-btn {
   @apply btn p-4 bg-primary text-text border border-text rounded-lg hover:bg-primary/60 transition-colors;
 }
+.secondary-btn {
+  @apply btn p-4 bg-secondary text-text border border-text rounded-lg hover:bg-secondary/60 transition-colors w-full;
+}
 
 .property-card {
   @apply card bg-primary/20 shadow-xl hover:shadow-2xl transition border border-text;

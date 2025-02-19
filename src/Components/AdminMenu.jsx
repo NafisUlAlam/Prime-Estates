@@ -11,6 +11,14 @@ const AdminMenu = () => {
           Home
         </NavLink>
       </button>
+      <button className="secondary-btn">
+        <NavLink
+          to="adminhome"
+          className={({ isActive }) => (isActive ? "text-red-400 " : "")}
+        >
+          Stats
+        </NavLink>
+      </button>
 
       <button className="secondary-btn">
         <NavLink

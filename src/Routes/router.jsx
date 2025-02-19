@@ -29,6 +29,7 @@ import AdvertiseProperties from "../Components/AdvertiseProperties";
 import DashboardHome from "../Components/DashboardHome";
 import AboutUs from "../Components/AboutUs";
 import ContactUs from "../Components/ContactUs";
+import AdminStats from "../Components/AdminStats";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,14 @@ const router = createBrowserRouter([
         ),
       },
       //admin routes
+      {
+        path: "adminhome",
+        element: (
+          <AdminRoute>
+            <AdminStats></AdminStats>
+          </AdminRoute>
+        ),
+      },
       {
         path: "adminprofile",
         element: (

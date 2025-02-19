@@ -32,20 +32,24 @@ const Footer = () => {
           </aside>
           <nav>
             <h6 className="footer-title">Services</h6>
-            <a className="link link-hover">Career</a>
+            <a className="">Career</a>
 
-            <a className="link link-hover">Advertisement</a>
+            <a className="">Advertisement</a>
           </nav>
           <nav>
             <h6 className="footer-title">Company</h6>
-            <a className="link link-hover">About us</a>
-            <a className="link link-hover">Contact</a>
+            <a className="link link-hover" href="/about">
+              About us
+            </a>
+            <a className="link link-hover" href="/contact">
+              Contact
+            </a>
           </nav>
           <nav>
             <h6 className="footer-title">Legal</h6>
-            <a className="link link-hover">Terms of use</a>
-            <a className="link link-hover">Privacy policy</a>
-            <a className="link link-hover">Cookie policy</a>
+            <a className="">Terms of use</a>
+            <a className="">Privacy policy</a>
+            <a className="">Cookie policy</a>
           </nav>
         </footer>
         <h2 className="mt-10 text-center">Follow us on</h2>

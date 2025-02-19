@@ -7,6 +7,8 @@ import LatestReviews from "./LatestReviews";
 import Advertisements from "./Advertisements";
 import WhyChooseUs from "./WhyChooseUs";
 import useDocumentTitle from "../../../hooks/useDocumentTitle";
+import ContactUs from "../../../Components/ContactUs";
+import AboutUs from "../../../Components/AboutUs";
 
 const Home = () => {
   useDocumentTitle(`Home|PrimeEstates`);
@@ -29,6 +31,12 @@ const Home = () => {
       </Fade>
       <Fade duration={1100}>
         <LatestReviews></LatestReviews>
+      </Fade>
+      <Fade duration={1300}>
+        <AboutUs />
+      </Fade>
+      <Fade duration={1500}>
+        <ContactUs />
       </Fade>
     </div>
   );
